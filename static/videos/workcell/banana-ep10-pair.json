@@ -1,0 +1,37 @@
+{
+  "episode": 10,
+  "dataset": "pnp_banana",
+  "source": "pnp260829_v6_multiview_physx_2x2.mp4",
+  "source_sha256": "4b6688bdef4c3b2c169d82cb60ceff89d8970f7c2786886b9d4a853201603a6b",
+  "fps": 20,
+  "frames": 302,
+  "duration_s": 15.1,
+  "layout": {
+    "real_exo": [
+      0,
+      36,
+      640,
+      444
+    ],
+    "sim_exo": [
+      640,
+      36,
+      640,
+      444
+    ],
+    "real_wrist": [
+      0,
+      516,
+      640,
+      444
+    ],
+    "sim_wrist": [
+      640,
+      516,
+      640,
+      444
+    ]
+  },
+  "simulation": "Recorded episode replayed through the SysID joint controller and PhysX; no attachment.",
+  "timing": "Real and simulation panels share each source video frame. No independent time alignment or speed rescaling."
+}

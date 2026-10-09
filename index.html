@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>DiscoDemo</title>
+<meta name="description" content="DiscoDemo trains an RL generator to discover many distinct successful solutions and exports them as demonstrations for visuomotor imitation learning.">
+<meta property="og:title" content="DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning">
+<meta property="og:description" content="DiscoDemo discovers diverse successful behaviors in simulation; policies trained on its data reach 78% average real-robot success across four tasks, versus 39% for the strongest baseline.">
+<meta property="og:url" content="https://davian-robotics.github.io/DiscoDemo/">
+<meta property="og:image" content="https://davian-robotics.github.io/DiscoDemo/static/images/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="static/images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="static/images/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Carlito:wght@400;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="static/css/style.css">
+<link rel="stylesheet" href="static/css/readability.css">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#14161b" media="(prefers-color-scheme: dark)">
+<script>
+  /* The reader's theme choice, applied before first paint so the page does not flash the other theme. */
+  try { var t = localStorage.getItem("theme"); if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t); } catch (e) {}
+</script>
+</head>
+<body data-logo-variant="party" data-task-style="cards">
+<header class="site-head">
+  <div class="wrap head-row">
+    <a class="wordmark-sm logo" href="#top" aria-label="DiscoDemo"><span class="logo-option logo-party" aria-hidden="true"><canvas class="party-lights"></canvas><span class="party-letters">Disc<span class="logo-orb party-orb">o</span></span><span class="party-reflection">Disco</span></span><span aria-hidden="true">Demo</span></a>
+    <nav aria-label="Sections">
+      <a href="#top">Title</a>
+      <a href="#problem">Problem</a>
+      <a href="#questions">Idea</a>
+      <a href="#method">Method</a>
+      <a href="#data">Generated data</a>
+      <a href="#analysis">Analysis</a>
+      <a href="#results">Results</a>
+      <a href="#takeaways">Takeaways</a>
+      <a href="#citation">Citation</a>
+    </nav>
+    <div class="lab-nav">
+      <button type="button" class="theme-btn" aria-label="Toggle dark theme"><svg class="moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2.5v2M12 19.5v2M2.5 12h2M19.5 12h2M5.3 5.3l1.4 1.4M17.3 17.3l1.4 1.4M5.3 18.7l1.4-1.4M17.3 6.7l1.4-1.4"/></svg></button>
+      <a class="home-link" href="https://davian-robotics.github.io/" title="DAVIAN Robotics"><img class="on-light" src="static/images/davian-robotics.svg" alt="DAVIAN Robotics" width="104" height="26"><img class="on-dark" src="static/images/davian-robotics-dark.svg" alt="DAVIAN Robotics" width="104" height="26"></a>
+      <details class="more">
+        <summary>More Research</summary>
+        <div class="more-menu">
+          <p class="more-head">Relevant research</p>
+          <a href="https://holiday-robot.github.io/FlashSAC/"><b>FlashSAC</b><span>Fast and Stable Off-Policy RL for High-Dimensional Robot Control</span><small>RSS 2026</small></a>
+          <a href="https://www.microsoft.com/en-us/research/articles/object-centric-residual-rl/"><b>Object-Centric Residual RL</b><span>Zero-Shot Sim-to-Real VLA Enhancement</span><small>CoRL 2026</small></a>
+          <a href="https://davian-robotics.github.io/SimbaV2/"><b>SimbaV2</b><span>Hyperspherical Normalization for Scalable Deep RL</span><small>ICML 2025</small></a>
+          <p class="more-head">More from DAVIAN Robotics</p>
+          <a href="https://davian-robotics.github.io/PHUMA/"><b>PHUMA</b><span>Physically Reliable Humanoid Locomotion Dataset</span><small>CoRL 2026</small></a>
+          <a href="https://davian-robotics.github.io/PAM/"><b>PAM</b><span>Procedural Assistance Memory for Proactive Robot</span><small>CoRL 2026</small></a>
+          <a href="https://davian-robotics.github.io/pointmap/"><b>See like a Robot</b><span>Robot-Centric Pointmaps for VLA Models</span><small>2026</small></a>
+          <a href="https://davian-robotics.github.io/3D_HAMSTER/"><b>3D HAMSTER</b><span>3D Trajectory Guidance for Hierarchical VLA Models</span><small>IROS 2026</small></a>
+          <a href="https://keh0t0.github.io/EgoX/"><b>EgoX</b><span>Egocentric Video Generation from a Single Exocentric Video</span><small>CVPR 2026</small></a>
+          <a href="https://davian-robotics.github.io/ACG"><b>ACG</b><span>Action Coherence Guidance for Flow-based VLA Models</span><small>ICRA 2026</small></a>
+        </div>
+      </details>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero wrap">
+  <h1 class="wordmark logo" aria-label="DiscoDemo" title="Hover or tap to turn up the disco lights"><span class="logo-option logo-party" aria-hidden="true"><canvas class="party-lights"></canvas><span class="party-letters">Disc<span class="logo-orb party-orb">o</span></span><span class="party-reflection">Disco</span></span><span aria-hidden="true">Demo</span></h1>
+  <p class="subtitle"><span class="acro">Disco</span>vering Efficient and Diverse Robot <span class="acro">Demo</span>nstrations for Imitation Learning</p>
+
+  <p class="authors">
+    <span><a href="https://pmh9960.github.io">Minho Park</a><sup>1*</sup></span>
+    <span><a href="https://kinam0252.github.io/">Kinam Kim</a><sup>1*</sup></span>
+    <span><a href="https://i-am-proto.github.io/">Donghu Kim</a><sup>2</sup></span>
+    <span><a href="https://lee15253.github.io/">Byungkun Lee</a><sup>1</sup></span>
+    <span><a href="https://godnpeter.github.io">Dongyoon Hwang</a><sup>1</sup></span>
+    <span><a href="https://ctid282.github.io/">Yongjae Shin</a><sup>1</sup></span>
+    <span><a href="https://junhahyung.github.io">Junha Hyung</a><sup>1</sup></span>
+    <span><a href="https://joonleesky.github.io/">Hojoon Lee</a><sup>2&dagger;</sup></span>
+    <span><a href="https://sites.google.com/site/jaegulchoo/">Jaegul Choo</a><sup>1&dagger;</sup></span>
+  </p>
+  <p class="affil"><span><sup>1</sup>KAIST AI</span> <span><sup>2</sup>Holiday Robotics</span></p>
+  <p class="affil affil-note"><span><sup>*</sup>Equal contribution</span> <span><sup>&dagger;</sup>Corresponding authors</span></p>
+
+  <p class="links">
+    <a class="btn is-soon" aria-disabled="true"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M3.8423 0a1.0037 1.0037 0 0 0-.922.6078c-.1536.3687-.0438.6275.2938 1.1113l6.9185 8.3597-1.0223 1.1058a1.0393 1.0393 0 0 0 .003 1.4229l1.2292 1.3135-5.4391 6.4444c-.2803.299-.4538.823-.2971 1.1986a1.0253 1.0253 0 0 0 .9585.635.9133.9133 0 0 0 .6891-.3405l5.783-6.126 7.4902 8.0051a.8527.8527 0 0 0 .6835.2597.9575.9575 0 0 0 .8777-.6138c.1577-.377-.017-.7502-.306-1.1407l-7.0518-8.3418 1.0632-1.13a.9626.9626 0 0 0 .0089-1.3165L4.6336.4639s-.3733-.4535-.768-.463zm0 .272h.0166c.2179.0052.4874.2715.5644.3639l.005.006.0052.0055 10.169 10.9905a.6915.6915 0 0 1-.0072.945l-1.0666 1.133-1.4982-1.7724-8.5994-10.39c-.3286-.472-.352-.6183-.2592-.841a.7307.7307 0 0 1 .6704-.4401Zm14.341 1.5701a.877.877 0 0 0-.6554.2418l-5.6962 6.1584 1.6944 1.8319 5.3089-6.5138c.3251-.4335.479-.6603.3247-1.0292a1.1205 1.1205 0 0 0-.9763-.689zm-7.6557 12.2823 1.3186 1.4135-5.7864 6.1295a.6494.6494 0 0 1-.4959.26.7516.7516 0 0 1-.706-.4669c-.1119-.2682.0359-.6864.2442-.9083l.0051-.0055.0047-.0055z"/></svg>Paper <small>soon</small></a>
+    <a class="btn" href="https://github.com/DAVIAN-Robotics/DiscoDemo"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>Code</a>
+    <a class="btn" href="https://huggingface.co/collections/DAVIAN-Robotics/discodemo-6ac696e70d028fddf0c3dfeb"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M1.4446 11.5059c0 1.1021.1673 2.1585.4847 3.1563-.0378-.0028-.0691-.0058-.1058-.0058-.4209 0-.8015.16-1.0704.4512-.3454.3737-.4984.8335-.4316 1.293a1.576 1.576 0 0 0 .2148.5978c-.2319.1864-.4018.4456-.4844.7578-.0646.2448-.131.7543.2149 1.2794a1.4552 1.4552 0 0 0-.0625.1055c-.208.3923-.2207.8372-.0371 1.25.2783.6258.9696 1.1175 2.3126 1.6467.8356.3292 1.5988.5411 1.6056.543 1.1046.2847 2.104.4277 2.969.4277 1.4173 0 2.4754-.3849 3.1525-1.1446 1.538.2651 2.791.1403 3.592.006.6773.7555 1.7332 1.1387 3.1467 1.1387.8649 0 1.8643-.143 2.969-.4278.0068-.0019.77-.2138 1.6056-.543 1.343-.5292 2.0343-1.0208 2.3126-1.6466.1836-.4129.171-.8577-.037-1.25a1.4685 1.4685 0 0 0-.0626-.1056c.346-.525.2795-1.0346.2149-1.2793-.0826-.3122-.2525-.5714-.4844-.7579.11-.1816.1831-.3788.2148-.5977.0669-.4595-.0862-.9193-.4316-1.293-.2688-.2913-.6495-.4513-1.0704-.4513-.0209 0-.0376.0008-.0588.0018.3162-.9966.4846-2.0518.4846-3.1523 0-5.807-4.7362-10.5144-10.5789-10.5144-5.8426 0-10.5788 4.7073-10.5788 10.5144Zm10.5788-9.4831c5.2727 0 9.5476 4.246 9.5476 9.483a9.4201 9.4201 0 0 1-.2696 2.2365c-.0039-.0047-.0079-.011-.0117-.0156-.274-.3255-.6679-.5059-1.1075-.5059-.352 0-.714.1155-1.0763.3438-.2403.1517-.5058.422-.7793.7598-.2534-.3492-.608-.5832-1.0137-.6465a1.5174 1.5174 0 0 0-.2344-.0176c-.9263 0-1.4828.7993-1.6935 1.5177-.1046.2426-.6065 1.3482-1.3614 2.0978-1.1681 1.1601-1.4458 2.3534-.8396 3.6382-.843.1029-1.5836.0927-2.365-.006.5906-1.212.3626-2.4388-.8426-3.6322-.755-.7496-1.2568-1.8552-1.3614-2.0978-.2107-.7184-.7673-1.5177-1.6935-1.5177-.078 0-.1568.0054-.2344.0176-.4057.0633-.7604.2973-1.0137.6465-.2735-.3379-.539-.6081-.7794-.7598-.3622-.2283-.7243-.3438-1.0762-.3438-.4266 0-.8094.171-1.0821.4786a9.4208 9.4208 0 0 1-.2598-2.1936c0-5.237 4.2749-9.483 9.5475-9.483zM8.6443 7.0036c-.4838.0043-.9503.2667-1.1934.7227-.3536.6633-.1006 1.4873.5645 1.84.351.1862.4883-.5261.836-.6485.3107-.1095.841.399 1.0078.086.3536-.6634.1025-1.4874-.5625-1.84a1.3659 1.3659 0 0 0-.6524-.1602Zm6.8403 0c-.2199-.002-.4426.05-.6504.1602-.665.3526-.9181 1.1766-.5645 1.84.1669.313.6971-.1955 1.0079-.086.3476.1224.4867.8347.838.6485.6649-.3527.916-1.1767.5624-1.84-.243-.456-.7096-.7184-1.1934-.7227Zm-9.7565 1.418a.8768.8768 0 0 0-.877.877c0 .4846.3925.877.877.877a.8768.8768 0 0 0 .877-.877.8768.8768 0 0 0-.877-.877zm12.6434 0c-.4845 0-.879.3925-.879.877 0 .4846.3945.877.879.877a.8768.8768 0 0 0 .877-.877.8768.8768 0 0 0-.877-.877zM8.7927 11.459c-.179-.003-.2793.1107-.2793.416 0 .8097.3874 2.125 1.4279 2.924.207-.7123 1.3453-1.2832 1.5079-1.2012.2315.1167.2191.4417.6074.7266.3884-.285.374-.6098.6056-.7266.1627-.082 1.3009.4889 1.5079 1.2012 1.0404-.799 1.4278-2.1144 1.4278-2.924 0-1.2212-1.583.6402-3.5413.6485-1.4686-.0061-2.7266-1.0558-3.2639-1.0645zM4.312 14.4768c.5792.365 1.6964 2.2751 2.1056 3.0177.1371.2488.371.3536.582.3536.4188 0 .7465-.4138.0391-.9395-1.0636-.791-.6914-2.0846-.1836-2.1642a.4302.4302 0 0 1 .0664-.004c.4616 0 .666.7892.666.7892s.5959 1.4898 1.6213 2.508c.942.9356 1.062 1.703.4961 2.6661-.0164-.004-.0159.0236-.1484.2149-.1853.2673-.4322.4688-.7188.6152-.5062.2269-1.1397.2696-1.7833.2696-1.037 0-2.1017-.1824-2.6975-.336-.0293-.0075-3.6505-.9567-3.1916-1.8224.0771-.1454.2033-.2031.3633-.2031.6463 0 1.823.9551 2.3283.9551.113 0 .196-.0865.2285-.2031.2249-.8045-3.2787-1.0522-2.9846-2.1642.0519-.1967.193-.2757.3907-.2754.854 0 2.7704 1.4923 3.172 1.4923.0307 0 .0525-.0085.0645-.0274.2012-.3227.1096-.5865-1.3087-1.4395-1.4182-.8533-2.4315-1.329-1.8653-1.9416.0651-.0707.1574-.1015.2695-.1015.8611.0002 2.8948 1.84 2.8948 1.84s.5487.5683.8809.5683c.0762 0 .1416-.0315.1855-.1054.2355-.3946-2.1858-2.2183-2.3224-2.971-.0926-.51.0641-.7676.3555-.7676-.0006.008.1701-.0285.4942.1759zm16.2257.5918c-.1366.7526-2.5579 2.5764-2.3224 2.9709.044.074.1092.1055.1855.1055.3321 0 .881-.5684.881-.5684s2.0336-1.8397 2.8947-1.84c.1121 0 .2044.0308.2695.1016.5662.6125-.447 1.0882-1.8653 1.9415-1.4183.853-1.51 1.1168-1.3087 1.4396.012.0188.0337.0273.0644.0273.4016 0 2.3181-1.4923 3.1721-1.4923.1977-.0002.3388.0787.3907.2754.294 1.112-3.2095 1.3597-2.9846 2.1642.0325.1166.1156.2032.2285.2032.5054 0 1.682-.9552 2.3283-.9552.16 0 .2862.0577.3633.2032.459.8656-3.1623 1.8149-3.1916 1.8224-.5958.1535-1.6605.336-2.6975.336-.6351 0-1.261-.0409-1.7638-.2599-.2949-.1472-.5488-.3516-.7383-.625-.0411-.0682-.1026-.1476-.1426-.205-.5726-.9679-.455-1.7371.4903-2.676 1.0254-1.0182 1.6212-2.508 1.6212-2.508s.2044-.7891.666-.7891a.4318.4318 0 0 1 .0665.0039c.5078.0796.88 1.3732-.1836 2.1642-.7074.5257-.3797.9395.039.9395.211 0 .445-.1047.5821-.3535.4092-.7426 1.5264-2.6527 2.1056-3.0178.5588-.3524.99-.1816.8497.5918z"/></svg>Datasets</a>
+    <a class="btn" href="#citation"><svg class="ico" width="15" height="15" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h7v7H7.5c0 2 1.3 3.2 3.5 3.5V19C6.6 18.6 4 16 4 12zm9 0h7v7h-3.5c0 2 1.3 3.2 3.5 3.5V19c-4.4-.4-7-3-7-7z"/></svg>BibTeX</a>
+  </p>
+
+</section>
+
+<section class="wrap prose-block" id="problem">
+  <h2>Robot data is expensive to collect</h2>
+  <div class="prose">
+    <p>Robot demonstrations are often collected by hand, one episode at a time. Even the 20 short demonstrations behind H20 add up&mdash;and that is before resetting the scene.</p>
+  </div>
+  <div class="tele" id="tele">
+    <div class="tele-video">
+      <video muted loop playsinline preload="none"></video>
+      <span class="tele-speed" data-role="speed">2&times; speed</span>
+      <div class="tele-clock"><span data-role="clock">0.0 s</span><small data-role="ep">clip 1 of 6</small></div>
+    </div>
+    <div class="tele-side">
+      <h4>20 episode durations; six shown in video</h4>
+      <div class="strip" data-role="strip"></div>
+      <p class="tele-fact"><span class="big-num" data-role="total"></span><br>for 20 demonstrations, excluding resets.</p>
+      <p class="tele-fact">3,000 demonstrations at this pace: <strong data-role="k3"></strong> of continuous teleoperation.</p>
+    </div>
+  </div>
+  <figure class="fig fig-plain">
+    <div class="scale-fig" data-fig="scale"></div>
+    <figcaption><button type="button" class="tbtn replay" data-replay>Replay</button>Teleoperation alone cannot grow robot data to the scale of image and text datasets. Circle area is proportional to the number of samples.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap prose-block" id="simulation">
+  <h2>Simulation scales from a small set of demonstrations</h2>
+  <div class="prose">
+    <p>Starting from 20 human demonstrations per task, DiscoDemo generates thousands more in parallel without an operator for each rollout. The resulting data can train policies that transfer to a real robot.</p>
+  </div>
+  <p class="fig-lead">36 DiscoDemo rollouts: nine per task, from the same starting scene within each task.</p>
+  <div class="wall" id="wall">
+    <video muted loop playsinline preload="none"></video>
+    <div class="wall-rows"><span><b>PnP-Banana</b></span><span><b>StackCube</b></span><span><b>FMB-Round</b></span><span><b>FMB-SqCircle</b></span></div>
+  </div>
+  <div class="replay-row"><button type="button" class="tbtn replay" data-replay="wall">Replay</button></div>
+  <div class="wall-stats">
+    <div><b>3,000</b>successful demonstrations per task</div>
+    <div><b>&asymp;15 GPU-h</b>average per task, generator training through rendering (one GPU process)</div>
+    <div><b>20</b>human seed demonstrations per task</div>
+  </div>
+  <p class="tele-fact">Compute excludes human data collection, scene setup, and downstream policy fine-tuning.</p>
+  <h3>Reconstructing the real workcell</h3>
+  <div class="prose">
+    <p>We recreate four real-robot tasks in Isaac Sim: pick-and-place, cube stacking, and two peg insertions. Below, compare a recorded pick-and-place episode with its simulation replay, frame for frame.</p>
+  </div>
+  <div class="controls"><span class="wipe-episode">PnP-Banana · Episode 10</span><div class="seg" role="tablist" aria-label="Camera view" id="wipe-camera"></div></div>
+  <div class="wipe" id="wipe" role="slider" aria-label="Real view reveal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" aria-valuetext="50% real, 50% simulation" aria-describedby="wipe-help" tabindex="0">
+    <video class="wipe-source" muted loop playsinline preload="metadata" src="static/videos/workcell/banana-ep10-pair.mp4" poster="static/videos/workcell/banana-ep10-pair.jpg" aria-hidden="true" tabindex="-1"></video>
+    <canvas class="wipe-canvas" width="640" height="444" aria-hidden="true"></canvas>
+    <div class="bar" aria-hidden="true"><span>↔</span></div>
+    <span class="lab l">Real</span><span class="lab r">Simulation</span>
+  </div>
+  <div class="wipe-controls">
+    <p id="wipe-help">Drag to reveal · Use ← / → keys</p>
+    <div class="transport"><button type="button" class="tbtn" id="wipe-play">Pause</button><button type="button" class="tbtn" data-replay="wipe">Restart</button><output class="clock" id="wipe-clock">0.0 s</output></div>
+  </div>
+  <p class="tele-fact">The same recorded episode and its physics-based replay. Real and simulation share all 302 frames at 20 fps. Drag to compare either the external or wrist camera.</p>
+</section>
+
+<section class="wrap prose-block" id="questions">
+  <h2>What makes simulated demonstrations useful?</h2>
+
+  <h3 id="generators">1. How do we generate successful trajectories?</h3>
+  <div class="generator-picker" role="tablist" aria-label="Generation approach"><button type="button" role="tab" aria-selected="true" data-generator="0">Planning</button><button type="button" role="tab" aria-selected="false" data-generator="1">MimicGen</button><button type="button" role="tab" aria-selected="false" data-generator="2">RL</button></div>
+  <div class="gen-grid">
+    <figure class="gen">
+      <h4 class="generator-heading">Motion planning<span>Design paths with rules</span></h4>
+      <video src="static/videos/sim/banana/teacher/mp_1.mp4" poster="static/videos/sim/banana/teacher/mp_1.jpg" muted loop playsinline preload="metadata" aria-label="Motion planning rollout"></video>
+      <figcaption><strong>Motion planning</strong> connects task poses with task-specific logic.</figcaption>
+    </figure>
+    <figure class="gen">
+      <h4 class="generator-heading">MimicGen<span>Adapt a human demonstration</span></h4>
+      <video src="static/videos/sim/banana/teacher/mg_1.mp4" poster="static/videos/sim/banana/teacher/mg_1.jpg" muted loop playsinline preload="metadata" aria-label="MimicGen rollout"></video>
+      <figcaption><strong>MimicGen</strong> adapts human demonstrations to new scenes.</figcaption>
+    </figure>
+    <figure class="gen">
+      <h4 class="generator-heading">Reinforcement learning<span>Learn actions from rewards</span></h4>
+      <video src="static/videos/sim/banana/teacher/rfcl_1.mp4" poster="static/videos/sim/banana/teacher/rfcl_1.jpg" muted loop playsinline preload="metadata" aria-label="Reinforcement learning rollout"></video>
+      <figcaption><strong>Reinforcement learning</strong> learns from task feedback, but can converge on similar motions.</figcaption>
+    </figure>
+  </div>
+  <p class="gen-note">PnP-Banana rollouts from motion planning, MimicGen, and P-RFCL.</p>
+
+  <h3 id="idea">2. How do we discover different solutions?</h3>
+  <div class="prose">
+    <p>More demonstrations can still repeat the same narrow behavior, leaving an imitation policy unprepared for unfamiliar states. DiscoDemo discovers different successful solutions to broaden the states covered by its data.</p>
+  </div>
+  <figure class="fig fig-anim-wrap">
+    <div class="fig-anim" data-fig="motivation" data-label="Three panels: a single demonstrated path that BC rollouts drift away from; augmentation widening a band around that one path; and DiscoDemo discovering several distinct successful paths that fill the space."></div>
+    <figcaption><button type="button" class="tbtn replay" data-replay>Replay</button>Augmentation expands around one solution; DiscoDemo discovers distinct solutions.</figcaption>
+  </figure>
+</section>
+
+<section class="wrap prose-block" id="method">
+  <h2>How <span class="brand-accent">DiscoDemo</span> works</h2>
+  <figure class="fig fig-anim-wrap">
+    <div class="fig-anim" data-fig="method" data-label="Method overview in three panels: curriculum RL training with task, diversity and safety rewards in massively parallel simulation; generating successful and diverse demonstrations from a skill-conditioned policy, filtered for success and safety; imitation learning with pi 0.5."></div>
+    <figcaption><button type="button" class="tbtn replay" data-replay>Replay</button>Train a diverse generator, filter its demonstrations, then learn a policy from images.</figcaption>
+  </figure>
+  <ol class="steps">
+    <li>
+      <h3>Learn diverse solutions</h3>
+      <p>A skill-conditioned RL policy learns from simulator state, with a demonstration-guided reverse curriculum for competence and a success-gated diversity reward for distinct solutions.</p>
+    </li>
+    <li>
+      <h3>Generate and filter demonstrations</h3>
+      <p>Each rollout samples a new skill; successful trajectories that pass safety checks are kept, 3,000 per task.</p>
+    </li>
+    <li>
+      <h3>Imitate from pixels</h3>
+      <p>Shoulder- and wrist-camera images with their actions fine-tune a DROID-pretrained &pi;<sub>0.5</sub>, which acts without simulator state.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="wrap prose-block" id="data">
+  <h2>What the generated demonstrations look like</h2>
+  <div class="prose">
+    <p>Each line traces a successful gripper path from the same starting scene. DiscoDemo keeps the direct motions of RL while discovering a wider range of approaches.</p>
+  </div>
+  <div class="traj" id="traj">
+    <div class="controls"><div class="seg" role="tablist" aria-label="Task" data-role="task"></div></div>
+    <div class="traj-grid" data-role="grid" role="img" aria-label="Gripper paths of up to 24 successful rollouts per data source from one fixed placement, drawn over the scene as they unfold. DiscoDemo fans out into several distinct short paths; P-RFCL follows one tight path."></div>
+    <div class="replay-row"><p class="tele-fact">Up to 24 successful paths per source, from one fixed placement, at 3&times; speed.</p><button type="button" class="tbtn replay" data-replay>Replay</button></div>
+  </div>
+</section>
+
+<section class="wrap wide" aria-labelledby="gen-title">
+  <div class="player" id="gen-player" data-mode="teacher">
+    <div class="player-head">
+      <h2 id="gen-title" class="player-title">Demonstration samples</h2>
+      <p class="player-note">Five successful rollouts per source from one fixed placement. H20 shows human demonstrations replayed in simulation, each from its original placement.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" role="tablist" aria-label="Task" data-role="task"></div>
+      <div class="transport">
+        <button type="button" class="tbtn" data-role="play" aria-label="Pause">Pause</button>
+        <button type="button" class="tbtn" data-role="restart">Restart</button>
+        <div class="seg seg-small" aria-label="Playback speed" data-role="speed"></div>
+        <output class="clock" data-role="clock" aria-live="off">0.0 s</output>
+      </div>
+    </div>
+    <div class="grid" data-role="grid"></div>
+  </div>
+</section>
+
+<section class="wrap prose-block" id="analysis">
+  <h2>Analysis</h2>
+
+  <h3>Wider coverage, at a lower cost</h3>
+  <div class="prose">
+    <p>DiscoDemo scores highest on our average coverage and diversity metrics, with near-95% generation yield before safety filtering. Episodes stay short, and generation compute&mdash;including generator training, rollouts, and rendering&mdash;remains among the lowest.</p>
+  </div>
+  <figure class="fig fig-anim-wrap">
+    <div class="fig-anim" data-fig="dataset" data-label="Four panels: coverage versus diversity scatter with DiscoDemo far to the upper right; generation yield bars; episode length bars; GPU-hours split into RL training and data generation."></div>
+    <figcaption><button type="button" class="tbtn replay" data-replay>Replay</button></figcaption>
+  </figure>
+
+  <h3>Balancing diversity and task success</h3>
+  <div class="prose">
+    <p>More diversity helps up to a point: average imitation success peaks at a moderate diversity weight. We use &alpha; = 0.3 for all four tasks.</p>
+  </div>
+  <figure class="fig fig-anim-wrap">
+    <div class="fig-anim" data-fig="alpha" data-label="PnP-Banana trajectories at alpha 0, 0.1, 0.3 and 1, growing from one tight path to a wide fan, with line charts showing diversity rising monotonically and downstream success peaking at alpha 0.3."></div>
+    <figcaption><button type="button" class="tbtn replay" data-replay>Replay</button></figcaption>
+  </figure>
+
+  <h3>Efficient generator training</h3>
+  <div class="prose">
+    <p>Parallel, state-based RL reaches high success within a few GPU-hours, with no systematic slowdown from the diversity objective. DiscoDemo and P-RFCL times are estimated; PLD and ExpertGen times are recorded.</p>
+  </div>
+  <figure class="fig fig-anim-wrap">
+    <div class="fig-anim" data-fig="rl_time" data-label="Generator success rate against compute time on four tasks. DiscoDemo and P-RFCL reach near 100% within a few hours; PLD and ExpertGen rise slowly over 24 hours."></div>
+    <figcaption><button type="button" class="tbtn replay" data-replay>Replay</button></figcaption>
+  </figure>
+</section>
+
+<section class="wrap prose-block" id="results">
+  <h2>Downstream imitation results</h2>
+  <div class="prose">
+    <p>With the same imitation learner and training recipe, DiscoDemo reaches <strong>62% success in simulation and 78% on the real robot</strong>, averaged across four tasks; the strongest baselines reach 40% and 39%. Generated datasets contain 3,000 successful demonstrations per task; H20 uses 20 human demonstrations.</p>
+  </div>
+  <div class="chart-block" id="results-chart">
+    <div class="controls">
+      <div class="seg" role="tablist" aria-label="Setting" data-role="setting"></div>
+    </div>
+    <div class="chart-rows" data-role="chart"></div>
+    <p class="chart-note" data-role="note"></p>
+  </div>
+  <div class="method-key" aria-hidden="true" id="method-key"></div>
+</section>
+
+<section class="wrap wide" aria-labelledby="sim-title">
+  <div class="player" id="sim-player" data-mode="sft">
+    <div class="player-head">
+      <h2 id="sim-title" class="player-title">Downstream policies in simulation</h2>
+      <p class="player-note">Columns are the eight data sources, rows five scenes per task; every policy starts from the same state within a scene. Column heads show the success rate on that task.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" role="tablist" aria-label="Task" data-role="task"></div>
+      <div class="transport">
+        <button type="button" class="tbtn" data-role="play" aria-label="Pause">Pause</button>
+        <button type="button" class="tbtn" data-role="restart">Restart</button>
+        <div class="seg seg-small" aria-label="Playback speed" data-role="speed"></div>
+        <output class="clock" data-role="clock" aria-live="off">0.0 s</output>
+      </div>
+    </div>
+    <div class="grid" data-role="grid"></div>
+  </div>
+</section>
+
+<section class="wrap wide" aria-labelledby="real-title">
+  <div class="player" id="real-player" data-mode="real">
+    <div class="player-head">
+      <h2 id="real-title" class="player-title">Real-robot policies trained on eight data sources</h2>
+      <p class="player-note">Every source on the same three real-robot scenes. Policies trained on generated data transfer from simulation without real-world fine-tuning.</p>
+    </div>
+    <div class="controls">
+      <div class="seg" role="tablist" aria-label="Task" data-role="task"></div>
+      <div class="transport">
+        <button type="button" class="tbtn" data-role="play" aria-label="Pause">Pause</button>
+        <button type="button" class="tbtn" data-role="restart">Restart</button>
+        <div class="seg seg-small" aria-label="Playback speed" data-role="speed"></div>
+        <output class="clock" data-role="clock" aria-live="off">0.0 s</output>
+      </div>
+    </div>
+    <div class="grid" data-role="grid"></div>
+  </div>
+</section>
+
+<section class="wrap prose-block" id="complementary">
+  <h2>Complementary to corrective data collection</h2>
+  <div class="prose narrow-fig">
+    <p>DiscoDemo remains stronger than P-RFCL after the same DAgger or DART corrections, especially on FMB-SqCircle. Diverse successful demonstrations and corrective data offer complementary benefits.</p>
+    <figure class="fig fig-inline fig-anim-wrap">
+      <div class="fig-anim" data-fig="onpolicy" data-label="Downstream success after DAgger and DART-style correction, P-RFCL versus DiscoDemo, on PnP-Banana (97 vs 99, 89 vs 94) and FMB-SqCircle (64 vs 74, 37 vs 78)."></div>
+    <figcaption><button type="button" class="tbtn replay" data-replay>Replay</button></figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="wrap prose-block" id="takeaways">
+  <h2>Takeaways</h2>
+  <ol class="takeaways">
+    <li><span><strong>Discover, don't just multiply.</strong> A skill-conditioned RL generator turns 20 human demonstrations into distinct successful solutions in simulation.</span></li>
+    <li><span><strong>Better imitation.</strong> With the same &pi;<sub>0.5</sub> recipe, policies reach 62% in simulation and 78% on a real robot, vs. 40% and 39% for the strongest baselines.</span></li>
+    <li><span><strong>Wider coverage, lower cost.</strong> Generated data covers more of the task space with short episodes and among the lowest generation compute.</span></li>
+  </ol>
+</section>
+
+<section class="wrap prose-block" id="citation">
+  <h2>Citation</h2>
+  <div class="bib">
+    <button type="button" class="tbtn copy" data-copy="bibtex">Copy</button>
+    <pre id="bibtex"><code>@article{park2026discodemo,
+  title   = {DiscoDemo: Discovering Efficient and Diverse Robot Demonstrations for Imitation Learning},
+  author  = {Park, Minho and Kim, Kinam and Kim, Donghu and Lee, Byungkun and Hwang, Dongyoon and Shin, Yongjae and Hyung, Junha and Lee, Hojoon and Choo, Jaegul},
+  journal = {arXiv preprint},
+  year    = {2026}
+}</code></pre>
+  </div>
+</section>
+
+</main>
+
+<footer class="site-foot wrap">
+  <p>This website is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by-sa/4.0/">Creative Commons Attribution-ShareAlike 4.0 International License</a>.</p>
+  <p>This means you are free to borrow the <a href="https://github.com/DAVIAN-Robotics/DiscoDemo">source code</a> of this website, we just ask that you link back to <a href="https://davian-robotics.github.io/DiscoDemo/">this page</a> in the footer.</p>
+</footer>
+
+<script src="static/data/page-data.js"></script>
+<script src="static/data/grid-data.js"></script>
+<script src="static/data/tcp-data.js"></script>
+<script src="static/js/view.js"></script>
+<script src="static/js/disco-lights.js"></script>
+<script src="static/js/task-picker.js"></script>
+<script src="static/js/main.js"></script>
+<script src="static/js/toc.js"></script>
+<script src="static/figs/motivation.js"></script>
+<script src="static/js/figs/core.js"></script>
+<script src="static/js/figs/motivation.js"></script>
+<script src="static/figs/method.js"></script>
+<script src="static/js/figs/method.js"></script>
+<script src="static/js/figs/intro.js"></script>
+<script src="static/js/figs/scale.js"></script>
+<script src="static/opening/opening-data.js"></script>
+<script src="static/js/figs/opening.js"></script>
+<script src="static/js/figs/traj.js"></script>
+<script src="static/figs/dataset.js"></script>
+<script src="static/figs/alpha.js"></script>
+<script src="static/traj/alpha.js"></script>
+<script src="static/figs/rl_time.js"></script>
+<script src="static/figs/onpolicy.js"></script>
+<script src="static/js/figs/charts.js"></script>
+<script src="static/js/readability.js"></script>
+</body>
+</html>
