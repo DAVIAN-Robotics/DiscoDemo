@@ -1,0 +1,15 @@
+[project]
+name = "real2sim"
+version = "0.1.0"
+description = "Real-to-sim FR3 workcell for RoboLab (Isaac Lab)."
+requires-python = ">=3.11"
+# Dependencies are pinned in the root pyproject.toml.
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+# Must be installed: RoboLab loads task files via importlib, and they import real2sim.
+include = ["real2sim", "real2sim.*"]

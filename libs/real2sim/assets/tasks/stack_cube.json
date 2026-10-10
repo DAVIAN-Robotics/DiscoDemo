@@ -1,0 +1,150 @@
+{
+ "_what": "FR3 Cube-Stack plant: the two cubes only. The cell (robot, gripper, cameras, mat, curtain, lights) is read from workcell.json.",
+ "_source_legend": "measured = weighed, ruled, or read off the teleop recording / placeholder = no evidence yet",
+ "version": "fr3-cubestack-realistic-v2",
+ "cube": {
+  "size_m": {
+   "value": 0.05,
+   "source": "measured",
+   "_source_detail": "ruler, operator; both cubes"
+  },
+  "mass_kg": {
+   "value": 0.065,
+   "source": "measured",
+   "_source_detail": "scale, operator; each cube, tape included"
+  },
+  "contact_material": {
+   "static_friction": {
+    "value": 0.8,
+    "source": "placeholder",
+    "_source_detail": "Wrapped in PVC electrical tape. Tape-on-tape decides whether a stack stands: tilt the blue cube with the red one on top until it slips, mu_s = tan(theta)."
+   },
+   "dynamic_friction": {
+    "value": 0.6,
+    "source": "placeholder"
+   },
+   "restitution": {
+    "value": 0.0,
+    "source": "reference",
+    "_source_detail": "same as banana/bowl"
+   },
+   "friction_combine_mode": "max"
+  },
+  "roughness": {
+   "value": 0.6,
+   "source": "placeholder",
+   "_source_detail": "render only"
+  },
+  "grasp_width_norm": {
+   "value": 0.6307,
+   "source": "measured",
+   "_source_detail": "Franka Hand normalised width when closed on a cube, median of 16 episodes (0.625-0.634); 0.63 x 80 mm = 50.4 mm, i.e. no measurable squeeze"
+  }
+ },
+ "cube_red": {
+  "linear_rgb": {
+   "value": [
+    0.3421,
+    0.0,
+    0.0511
+   ],
+   "source": "measured",
+   "_source_detail": "render-matched, round 3: two-view fit with diffuse response s from round 1 and emission gain k from round 2, ep13 frame 0, both cameras Round 4: round-3 values x per-channel linear ratio real/sim [0.875, 0.65, 3.6] (both views, frame 0), which keeps the diffuse/emission split."
+  },
+  "spawn_pos": {
+   "value": [
+    0.611935,
+    -0.025114,
+    0.057
+   ],
+   "source": "measured",
+   "_source_detail": "episode 13: medoid of 12 train red/blue pairs (held out [3, 7, 11, 15]). xy = TCP at grasp onset; z = mat top 32 mm + 25 mm."
+  },
+  "yaw_deg": {
+   "value": -31.139,
+   "source": "measured",
+   "_source_detail": "hand-x yaw at grasp onset, mod 90"
+  },
+  "camera_srgb_median": {
+   "left_back": [
+    163,
+    31,
+    20
+   ],
+   "wrist": [
+    169,
+    14,
+    23
+   ],
+   "_source_detail": "median of the colour-segmented cube, ep13 frame 0, both cameras: the target"
+  },
+  "emission_linear_rgb": {
+   "value": [
+    0.1491,
+    0.0126,
+    0.0097
+   ],
+   "source": "measured",
+   "_source_detail": "Stands in for the translucent tape (it reads about as bright from both cameras). Round 3: solved with measured emission-to-pixel gain. Round 4: round-3 values x per-channel linear ratio real/sim [0.875, 0.65, 3.6] (both views, frame 0), which keeps the diffuse/emission split."
+  }
+ },
+ "cube_blue": {
+  "linear_rgb": {
+   "value": [
+    0.005,
+    0.367,
+    0.8052
+   ],
+   "source": "measured",
+   "_source_detail": "render-matched, round 3, left_back only: per-channel diffuse response measured on rounds 1-2 (B 0.236 confirmed by round 2), G from round 2. The wrist view is excluded: at ep13 frame 0 the blue cube is cut by the wrist image's bottom edge and its two rounds disagree. Diffuse only -- blue needs no emission. Round 4: B x1.22 from the round-3 left_back ratio; the in-view wrist frames (230-270) asked for about the same."
+  },
+  "spawn_pos": {
+   "value": [
+    0.3829,
+    -0.025409,
+    0.057
+   ],
+   "source": "measured",
+   "_source_detail": "episode 13: TCP xy at the last frame before release (the red cube is set down on it); z = mat top 32 mm + 25 mm."
+  },
+  "yaw_deg": {
+   "value": -40.005,
+   "source": "measured",
+   "_source_detail": "hand-x yaw before release, mod 90: the operator squares the top cube to the bottom one"
+  },
+  "camera_srgb_median": {
+   "left_back": [
+    6,
+    65,
+    110
+   ],
+   "wrist": [
+    0,
+    54,
+    107
+   ],
+   "_source_detail": "median of the colour-segmented cube, ep13 frame 0, both cameras: the target"
+  },
+  "emission_linear_rgb": {
+   "value": [
+    0.0,
+    0.0,
+    0.0
+   ],
+   "source": "measured",
+   "_source_detail": "round 3: none needed; the blue cube's two views read alike under diffuse alone"
+  }
+ },
+ "success": {
+  "_what": "red cube resting on blue: centre height difference one edge, horizontally inside the blue top, and still",
+  "stack_height_m": 0.05,
+  "height_tolerance_m": 0.01,
+  "xy_tolerance_m": 0.025,
+  "settle_speed_m_s": 0.02
+ },
+ "episode_length_s": {
+  "value": 30,
+  "source": "measured",
+  "_source_detail": "16 demos p95 18.0 s (max 18.9 s) x 1.67"
+ }
+}

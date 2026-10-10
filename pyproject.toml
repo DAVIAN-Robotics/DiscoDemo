@@ -1,0 +1,101 @@
+[project]
+name = "discodemo"
+version = "0.1.0"
+description = "DiscoDemo: real-to-sim FR3 tasks, diverse RL demonstration generators, generated datasets and pi0.5 SFT"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.11, <3.12"
+dependencies = [
+    # Simulation (Isaac Sim 5.0 / Isaac Lab 2.2)
+    "isaacsim[all,extscache]==5.0.0",
+    "isaaclab==2.2.0",
+    "torch==2.9.1",
+    # Local packages (editable, see [tool.uv.sources])
+    "robolab",
+    "flashsac",
+    "real2sim",
+    "fmb",
+    "lerobot[pi]",
+    # RL / data / logging
+    "hydra-core",
+    "omegaconf",
+    "gymnasium>=1.1.1",
+    "numpy",
+    "scipy",
+    "h5py",
+    "pyarrow>=17.0",
+    "pandas",
+    "imageio",
+    "imageio-ffmpeg",
+    "matplotlib",
+    "tqdm",
+    "pyyaml",
+    "wandb>=0.24.2",
+    "tensorboard",
+    # pi0.5 SFT: lerobot's video decoder; 0.8 is the release built for torch 2.9.
+    "torchcodec>=0.8,<0.9",
+]
+
+[project.optional-dependencies]
+# Forward kinematics for the dataset coverage analysis (scripts/analysis/coverage_vendi.py).
+analysis = [
+    "pyroki @ git+https://github.com/chungmin99/pyroki.git",
+    "robot_descriptions>=1.16.0",
+    "jax<0.8",  # jax >= 0.8 needs numpy 2; Isaac Sim pins numpy 1.26
+]
+
+[tool.uv]
+environments = ["sys_platform == 'linux'"]
+override-dependencies = [
+    "torch==2.9.1",            # cu128 wheel (Blackwell) + Isaac Sim 5.0
+    "torchvision==0.24.1",
+    "flatdict==4.0.0",         # isaaclab issue #4577
+    "opencv-python ; sys_platform == 'never'",  # headless: isaaclab ships opencv-python-headless
+    "sentry-sdk==1.43.0",      # isaacsim-kernel pins 1.43.0, wandb asks for >=2.0
+    "numpy==1.26.0",           # Isaac Sim 5.0 is built against numpy 1.26
+    "packaging==24.2",         # isaacsim-core pins 23.0, lerobot asks for >=24.2
+    "websockets==16.0",        # isaacsim-kernel pins 12.0, which drags viser (pyroki, analysis) back to 0.2
+]
+
+[tool.uv.extra-build-dependencies]
+flatdict = ["setuptools<81", "wheel"]
+
+[tool.uv.sources]
+robolab = { path = "libs/RoboLab", editable = true }
+flashsac = { path = "libs/FlashSAC", editable = true }
+real2sim = { path = "libs/real2sim", editable = true }
+fmb = { path = "libs/fmb", editable = true }
+lerobot = { path = "libs/lerobot", editable = true }
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }
+torchcodec = { index = "pytorch-cu128" }
+isaacsim = { index = "nvidia" }
+isaaclab = { index = "nvidia" }
+
+[[tool.uv.index]]
+name = "nvidia"
+url = "https://pypi.nvidia.com"
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.12.1"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = [".", "scripts/analysis"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+# Upstream packages keep their own style (our edits there are listed in docs/).
+extend-exclude = ["libs/lerobot", "libs/RoboLab/robolab"]
+
+[tool.ruff.lint]
+select = ["F", "I", "UP", "B", "SIM"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["flash_rl", "real2sim", "fmb", "robolab", "sft"]

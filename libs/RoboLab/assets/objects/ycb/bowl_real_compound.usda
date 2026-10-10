@@ -1,0 +1,761 @@
+#usda 1.0
+(
+    defaultPrim = "bowl"
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "bowl" (
+    prepend apiSchemas = ["PhysxRigidBodyAPI"]
+    prepend references = @bowl_real.usd@
+)
+{
+    float physics:mass = 0.500000
+    bool physxRigidBody:enableCCD = 1
+    int physxRigidBody:solverPositionIterationCount = 16
+    int physxRigidBody:solverVelocityIterationCount = 1
+    float physxRigidBody:maxDepenetrationVelocity = 3.000000
+
+    over "mesh"
+    {
+        bool physics:collisionEnabled = 0
+    }
+
+    def Xform "measured_compound_collision"
+    {
+        def Cylinder "bottom" (
+            prepend apiSchemas = ["PhysicsCollisionAPI"]
+        )
+        {
+            uniform token axis = "Z"
+            bool physics:collisionEnabled = 1
+            double height = 0.005000000
+            double radius = 0.047500000
+            double3 xformOp:translate = (0, 0, 0.002500000)
+            uniform token[] xformOpOrder = ["xformOp:translate"]
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_00" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.047500000, 0.000000000, 0.000000000), (0.047093631, 0.006199994, 0.000000000), (0.084272813, 0.011094726, 0.073000000), (0.085000000, 0.000000000, 0.073000000), (0.045068493, 0.000000000, 0.005000000), (0.044682926, 0.005882619, 0.005000000), (0.079315589, 0.010442095, 0.073000000), (0.080000000, 0.000000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_01" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.047093631, 0.006199994, 0.000000000), (0.045881477, 0.012293905, 0.000000000), (0.082103695, 0.021999619, 0.073000000), (0.084272813, 0.011094726, 0.073000000), (0.044682926, 0.005882619, 0.005000000), (0.043532821, 0.011664584, 0.005000000), (0.077274066, 0.020705524, 0.073000000), (0.079315589, 0.010442095, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_02" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.045881477, 0.012293905, 0.000000000), (0.043884278, 0.018177463, 0.000000000), (0.078529760, 0.032528092, 0.073000000), (0.082103695, 0.021999619, 0.073000000), (0.043532821, 0.011664584, 0.005000000), (0.041637858, 0.017246966, 0.005000000), (0.073910363, 0.030614675, 0.073000000), (0.077274066, 0.020705524, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_03" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.043884278, 0.018177463, 0.000000000), (0.041136207, 0.023750000, 0.000000000), (0.073612159, 0.042500000, 0.073000000), (0.078529760, 0.032528092, 0.073000000), (0.041637858, 0.017246966, 0.005000000), (0.039030460, 0.022534247, 0.005000000), (0.069282032, 0.040000000, 0.073000000), (0.073910363, 0.030614675, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_04" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.041136207, 0.023750000, 0.000000000), (0.037684284, 0.028916168, 0.000000000), (0.067435034, 0.051744721, 0.073000000), (0.073612159, 0.042500000, 0.073000000), (0.039030460, 0.022534247, 0.005000000), (0.035755240, 0.027435960, 0.005000000), (0.063468267, 0.048700914, 0.073000000), (0.069282032, 0.040000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_05" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.037684284, 0.028916168, 0.000000000), (0.033587572, 0.033587572, 0.000000000), (0.060104076, 0.060104076, 0.073000000), (0.067435034, 0.051744721, 0.073000000), (0.035755240, 0.027435960, 0.005000000), (0.031868237, 0.031868237, 0.005000000), (0.056568542, 0.056568542, 0.073000000), (0.063468267, 0.048700914, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_06" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.033587572, 0.033587572, 0.000000000), (0.028916168, 0.037684284, 0.000000000), (0.051744721, 0.067435034, 0.073000000), (0.060104076, 0.060104076, 0.073000000), (0.031868237, 0.031868237, 0.005000000), (0.027435960, 0.035755240, 0.005000000), (0.048700914, 0.063468267, 0.073000000), (0.056568542, 0.056568542, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_07" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.028916168, 0.037684284, 0.000000000), (0.023750000, 0.041136207, 0.000000000), (0.042500000, 0.073612159, 0.073000000), (0.051744721, 0.067435034, 0.073000000), (0.027435960, 0.035755240, 0.005000000), (0.022534247, 0.039030460, 0.005000000), (0.040000000, 0.069282032, 0.073000000), (0.048700914, 0.063468267, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_08" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.023750000, 0.041136207, 0.000000000), (0.018177463, 0.043884278, 0.000000000), (0.032528092, 0.078529760, 0.073000000), (0.042500000, 0.073612159, 0.073000000), (0.022534247, 0.039030460, 0.005000000), (0.017246966, 0.041637858, 0.005000000), (0.030614675, 0.073910363, 0.073000000), (0.040000000, 0.069282032, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_09" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.018177463, 0.043884278, 0.000000000), (0.012293905, 0.045881477, 0.000000000), (0.021999619, 0.082103695, 0.073000000), (0.032528092, 0.078529760, 0.073000000), (0.017246966, 0.041637858, 0.005000000), (0.011664584, 0.043532821, 0.005000000), (0.020705524, 0.077274066, 0.073000000), (0.030614675, 0.073910363, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_10" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.012293905, 0.045881477, 0.000000000), (0.006199994, 0.047093631, 0.000000000), (0.011094726, 0.084272813, 0.073000000), (0.021999619, 0.082103695, 0.073000000), (0.011664584, 0.043532821, 0.005000000), (0.005882619, 0.044682926, 0.005000000), (0.010442095, 0.079315589, 0.073000000), (0.020705524, 0.077274066, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_11" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.006199994, 0.047093631, 0.000000000), (0.000000000, 0.047500000, 0.000000000), (0.000000000, 0.085000000, 0.073000000), (0.011094726, 0.084272813, 0.073000000), (0.005882619, 0.044682926, 0.005000000), (0.000000000, 0.045068493, 0.005000000), (0.000000000, 0.080000000, 0.073000000), (0.010442095, 0.079315589, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_12" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.000000000, 0.047500000, 0.000000000), (-0.006199994, 0.047093631, 0.000000000), (-0.011094726, 0.084272813, 0.073000000), (0.000000000, 0.085000000, 0.073000000), (0.000000000, 0.045068493, 0.005000000), (-0.005882619, 0.044682926, 0.005000000), (-0.010442095, 0.079315589, 0.073000000), (0.000000000, 0.080000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_13" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.006199994, 0.047093631, 0.000000000), (-0.012293905, 0.045881477, 0.000000000), (-0.021999619, 0.082103695, 0.073000000), (-0.011094726, 0.084272813, 0.073000000), (-0.005882619, 0.044682926, 0.005000000), (-0.011664584, 0.043532821, 0.005000000), (-0.020705524, 0.077274066, 0.073000000), (-0.010442095, 0.079315589, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_14" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.012293905, 0.045881477, 0.000000000), (-0.018177463, 0.043884278, 0.000000000), (-0.032528092, 0.078529760, 0.073000000), (-0.021999619, 0.082103695, 0.073000000), (-0.011664584, 0.043532821, 0.005000000), (-0.017246966, 0.041637858, 0.005000000), (-0.030614675, 0.073910363, 0.073000000), (-0.020705524, 0.077274066, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_15" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.018177463, 0.043884278, 0.000000000), (-0.023750000, 0.041136207, 0.000000000), (-0.042500000, 0.073612159, 0.073000000), (-0.032528092, 0.078529760, 0.073000000), (-0.017246966, 0.041637858, 0.005000000), (-0.022534247, 0.039030460, 0.005000000), (-0.040000000, 0.069282032, 0.073000000), (-0.030614675, 0.073910363, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_16" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.023750000, 0.041136207, 0.000000000), (-0.028916168, 0.037684284, 0.000000000), (-0.051744721, 0.067435034, 0.073000000), (-0.042500000, 0.073612159, 0.073000000), (-0.022534247, 0.039030460, 0.005000000), (-0.027435960, 0.035755240, 0.005000000), (-0.048700914, 0.063468267, 0.073000000), (-0.040000000, 0.069282032, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_17" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.028916168, 0.037684284, 0.000000000), (-0.033587572, 0.033587572, 0.000000000), (-0.060104076, 0.060104076, 0.073000000), (-0.051744721, 0.067435034, 0.073000000), (-0.027435960, 0.035755240, 0.005000000), (-0.031868237, 0.031868237, 0.005000000), (-0.056568542, 0.056568542, 0.073000000), (-0.048700914, 0.063468267, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_18" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.033587572, 0.033587572, 0.000000000), (-0.037684284, 0.028916168, 0.000000000), (-0.067435034, 0.051744721, 0.073000000), (-0.060104076, 0.060104076, 0.073000000), (-0.031868237, 0.031868237, 0.005000000), (-0.035755240, 0.027435960, 0.005000000), (-0.063468267, 0.048700914, 0.073000000), (-0.056568542, 0.056568542, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_19" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.037684284, 0.028916168, 0.000000000), (-0.041136207, 0.023750000, 0.000000000), (-0.073612159, 0.042500000, 0.073000000), (-0.067435034, 0.051744721, 0.073000000), (-0.035755240, 0.027435960, 0.005000000), (-0.039030460, 0.022534247, 0.005000000), (-0.069282032, 0.040000000, 0.073000000), (-0.063468267, 0.048700914, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_20" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.041136207, 0.023750000, 0.000000000), (-0.043884278, 0.018177463, 0.000000000), (-0.078529760, 0.032528092, 0.073000000), (-0.073612159, 0.042500000, 0.073000000), (-0.039030460, 0.022534247, 0.005000000), (-0.041637858, 0.017246966, 0.005000000), (-0.073910363, 0.030614675, 0.073000000), (-0.069282032, 0.040000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_21" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.043884278, 0.018177463, 0.000000000), (-0.045881477, 0.012293905, 0.000000000), (-0.082103695, 0.021999619, 0.073000000), (-0.078529760, 0.032528092, 0.073000000), (-0.041637858, 0.017246966, 0.005000000), (-0.043532821, 0.011664584, 0.005000000), (-0.077274066, 0.020705524, 0.073000000), (-0.073910363, 0.030614675, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_22" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.045881477, 0.012293905, 0.000000000), (-0.047093631, 0.006199994, 0.000000000), (-0.084272813, 0.011094726, 0.073000000), (-0.082103695, 0.021999619, 0.073000000), (-0.043532821, 0.011664584, 0.005000000), (-0.044682926, 0.005882619, 0.005000000), (-0.079315589, 0.010442095, 0.073000000), (-0.077274066, 0.020705524, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_23" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.047093631, 0.006199994, 0.000000000), (-0.047500000, 0.000000000, 0.000000000), (-0.085000000, 0.000000000, 0.073000000), (-0.084272813, 0.011094726, 0.073000000), (-0.044682926, 0.005882619, 0.005000000), (-0.045068493, 0.000000000, 0.005000000), (-0.080000000, 0.000000000, 0.073000000), (-0.079315589, 0.010442095, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_24" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.047500000, 0.000000000, 0.000000000), (-0.047093631, -0.006199994, 0.000000000), (-0.084272813, -0.011094726, 0.073000000), (-0.085000000, 0.000000000, 0.073000000), (-0.045068493, 0.000000000, 0.005000000), (-0.044682926, -0.005882619, 0.005000000), (-0.079315589, -0.010442095, 0.073000000), (-0.080000000, 0.000000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_25" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.047093631, -0.006199994, 0.000000000), (-0.045881477, -0.012293905, 0.000000000), (-0.082103695, -0.021999619, 0.073000000), (-0.084272813, -0.011094726, 0.073000000), (-0.044682926, -0.005882619, 0.005000000), (-0.043532821, -0.011664584, 0.005000000), (-0.077274066, -0.020705524, 0.073000000), (-0.079315589, -0.010442095, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_26" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.045881477, -0.012293905, 0.000000000), (-0.043884278, -0.018177463, 0.000000000), (-0.078529760, -0.032528092, 0.073000000), (-0.082103695, -0.021999619, 0.073000000), (-0.043532821, -0.011664584, 0.005000000), (-0.041637858, -0.017246966, 0.005000000), (-0.073910363, -0.030614675, 0.073000000), (-0.077274066, -0.020705524, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_27" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.043884278, -0.018177463, 0.000000000), (-0.041136207, -0.023750000, 0.000000000), (-0.073612159, -0.042500000, 0.073000000), (-0.078529760, -0.032528092, 0.073000000), (-0.041637858, -0.017246966, 0.005000000), (-0.039030460, -0.022534247, 0.005000000), (-0.069282032, -0.040000000, 0.073000000), (-0.073910363, -0.030614675, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_28" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.041136207, -0.023750000, 0.000000000), (-0.037684284, -0.028916168, 0.000000000), (-0.067435034, -0.051744721, 0.073000000), (-0.073612159, -0.042500000, 0.073000000), (-0.039030460, -0.022534247, 0.005000000), (-0.035755240, -0.027435960, 0.005000000), (-0.063468267, -0.048700914, 0.073000000), (-0.069282032, -0.040000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_29" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.037684284, -0.028916168, 0.000000000), (-0.033587572, -0.033587572, 0.000000000), (-0.060104076, -0.060104076, 0.073000000), (-0.067435034, -0.051744721, 0.073000000), (-0.035755240, -0.027435960, 0.005000000), (-0.031868237, -0.031868237, 0.005000000), (-0.056568542, -0.056568542, 0.073000000), (-0.063468267, -0.048700914, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_30" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.033587572, -0.033587572, 0.000000000), (-0.028916168, -0.037684284, 0.000000000), (-0.051744721, -0.067435034, 0.073000000), (-0.060104076, -0.060104076, 0.073000000), (-0.031868237, -0.031868237, 0.005000000), (-0.027435960, -0.035755240, 0.005000000), (-0.048700914, -0.063468267, 0.073000000), (-0.056568542, -0.056568542, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_31" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.028916168, -0.037684284, 0.000000000), (-0.023750000, -0.041136207, 0.000000000), (-0.042500000, -0.073612159, 0.073000000), (-0.051744721, -0.067435034, 0.073000000), (-0.027435960, -0.035755240, 0.005000000), (-0.022534247, -0.039030460, 0.005000000), (-0.040000000, -0.069282032, 0.073000000), (-0.048700914, -0.063468267, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_32" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.023750000, -0.041136207, 0.000000000), (-0.018177463, -0.043884278, 0.000000000), (-0.032528092, -0.078529760, 0.073000000), (-0.042500000, -0.073612159, 0.073000000), (-0.022534247, -0.039030460, 0.005000000), (-0.017246966, -0.041637858, 0.005000000), (-0.030614675, -0.073910363, 0.073000000), (-0.040000000, -0.069282032, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_33" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.018177463, -0.043884278, 0.000000000), (-0.012293905, -0.045881477, 0.000000000), (-0.021999619, -0.082103695, 0.073000000), (-0.032528092, -0.078529760, 0.073000000), (-0.017246966, -0.041637858, 0.005000000), (-0.011664584, -0.043532821, 0.005000000), (-0.020705524, -0.077274066, 0.073000000), (-0.030614675, -0.073910363, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_34" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.012293905, -0.045881477, 0.000000000), (-0.006199994, -0.047093631, 0.000000000), (-0.011094726, -0.084272813, 0.073000000), (-0.021999619, -0.082103695, 0.073000000), (-0.011664584, -0.043532821, 0.005000000), (-0.005882619, -0.044682926, 0.005000000), (-0.010442095, -0.079315589, 0.073000000), (-0.020705524, -0.077274066, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_35" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.006199994, -0.047093631, 0.000000000), (-0.000000000, -0.047500000, 0.000000000), (-0.000000000, -0.085000000, 0.073000000), (-0.011094726, -0.084272813, 0.073000000), (-0.005882619, -0.044682926, 0.005000000), (-0.000000000, -0.045068493, 0.005000000), (-0.000000000, -0.080000000, 0.073000000), (-0.010442095, -0.079315589, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_36" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(-0.000000000, -0.047500000, 0.000000000), (0.006199994, -0.047093631, 0.000000000), (0.011094726, -0.084272813, 0.073000000), (-0.000000000, -0.085000000, 0.073000000), (-0.000000000, -0.045068493, 0.005000000), (0.005882619, -0.044682926, 0.005000000), (0.010442095, -0.079315589, 0.073000000), (-0.000000000, -0.080000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_37" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.006199994, -0.047093631, 0.000000000), (0.012293905, -0.045881477, 0.000000000), (0.021999619, -0.082103695, 0.073000000), (0.011094726, -0.084272813, 0.073000000), (0.005882619, -0.044682926, 0.005000000), (0.011664584, -0.043532821, 0.005000000), (0.020705524, -0.077274066, 0.073000000), (0.010442095, -0.079315589, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_38" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.012293905, -0.045881477, 0.000000000), (0.018177463, -0.043884278, 0.000000000), (0.032528092, -0.078529760, 0.073000000), (0.021999619, -0.082103695, 0.073000000), (0.011664584, -0.043532821, 0.005000000), (0.017246966, -0.041637858, 0.005000000), (0.030614675, -0.073910363, 0.073000000), (0.020705524, -0.077274066, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_39" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.018177463, -0.043884278, 0.000000000), (0.023750000, -0.041136207, 0.000000000), (0.042500000, -0.073612159, 0.073000000), (0.032528092, -0.078529760, 0.073000000), (0.017246966, -0.041637858, 0.005000000), (0.022534247, -0.039030460, 0.005000000), (0.040000000, -0.069282032, 0.073000000), (0.030614675, -0.073910363, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_40" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.023750000, -0.041136207, 0.000000000), (0.028916168, -0.037684284, 0.000000000), (0.051744721, -0.067435034, 0.073000000), (0.042500000, -0.073612159, 0.073000000), (0.022534247, -0.039030460, 0.005000000), (0.027435960, -0.035755240, 0.005000000), (0.048700914, -0.063468267, 0.073000000), (0.040000000, -0.069282032, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_41" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.028916168, -0.037684284, 0.000000000), (0.033587572, -0.033587572, 0.000000000), (0.060104076, -0.060104076, 0.073000000), (0.051744721, -0.067435034, 0.073000000), (0.027435960, -0.035755240, 0.005000000), (0.031868237, -0.031868237, 0.005000000), (0.056568542, -0.056568542, 0.073000000), (0.048700914, -0.063468267, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_42" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.033587572, -0.033587572, 0.000000000), (0.037684284, -0.028916168, 0.000000000), (0.067435034, -0.051744721, 0.073000000), (0.060104076, -0.060104076, 0.073000000), (0.031868237, -0.031868237, 0.005000000), (0.035755240, -0.027435960, 0.005000000), (0.063468267, -0.048700914, 0.073000000), (0.056568542, -0.056568542, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_43" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.037684284, -0.028916168, 0.000000000), (0.041136207, -0.023750000, 0.000000000), (0.073612159, -0.042500000, 0.073000000), (0.067435034, -0.051744721, 0.073000000), (0.035755240, -0.027435960, 0.005000000), (0.039030460, -0.022534247, 0.005000000), (0.069282032, -0.040000000, 0.073000000), (0.063468267, -0.048700914, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_44" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.041136207, -0.023750000, 0.000000000), (0.043884278, -0.018177463, 0.000000000), (0.078529760, -0.032528092, 0.073000000), (0.073612159, -0.042500000, 0.073000000), (0.039030460, -0.022534247, 0.005000000), (0.041637858, -0.017246966, 0.005000000), (0.073910363, -0.030614675, 0.073000000), (0.069282032, -0.040000000, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_45" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.043884278, -0.018177463, 0.000000000), (0.045881477, -0.012293905, 0.000000000), (0.082103695, -0.021999619, 0.073000000), (0.078529760, -0.032528092, 0.073000000), (0.041637858, -0.017246966, 0.005000000), (0.043532821, -0.011664584, 0.005000000), (0.077274066, -0.020705524, 0.073000000), (0.073910363, -0.030614675, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_46" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.045881477, -0.012293905, 0.000000000), (0.047093631, -0.006199994, 0.000000000), (0.084272813, -0.011094726, 0.073000000), (0.082103695, -0.021999619, 0.073000000), (0.043532821, -0.011664584, 0.005000000), (0.044682926, -0.005882619, 0.005000000), (0.079315589, -0.010442095, 0.073000000), (0.077274066, -0.020705524, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+
+        def Mesh "wall_47" (
+            prepend apiSchemas = ["PhysicsCollisionAPI", "PhysicsMeshCollisionAPI"]
+        )
+        {
+            bool physics:collisionEnabled = 1
+            uniform token physics:approximation = "convexHull"
+            point3f[] points = [(0.047093631, -0.006199994, 0.000000000), (0.047500000, -0.000000000, 0.000000000), (0.085000000, -0.000000000, 0.073000000), (0.084272813, -0.011094726, 0.073000000), (0.044682926, -0.005882619, 0.005000000), (0.045068493, -0.000000000, 0.005000000), (0.080000000, -0.000000000, 0.073000000), (0.079315589, -0.010442095, 0.073000000)]
+            int[] faceVertexCounts = [4, 4, 4, 4, 4, 4]
+            int[] faceVertexIndices = [0, 1, 2, 3, 7, 6, 5, 4, 0, 3, 7, 4, 1, 5, 6, 2, 0, 4, 5, 1, 3, 2, 6, 7]
+            uniform token subdivisionScheme = "none"
+            token purpose = "proxy"
+            token visibility = "invisible"
+            rel material:binding:physics = </bowl/physics_material>
+        }
+    }
+}

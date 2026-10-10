@@ -1,0 +1,28 @@
+# @package _global_
+# PnP-Banana: pick up the banana and place it in the bowl. Horizon 30 s.
+
+task_name: pnp_banana
+
+env:
+  task: libs/real2sim/real2sim/tasks/pnp_banana.py
+  env_version: fr3-pnp_banana
+  gripper_lock: null
+
+rfcl:
+  demo_path: data/demo_banks/pnp_banana/human_demos.h5
+  init_pose: 'box:0.4125,0.6375,-0.15,0.15,180,0.20'
+
+# Object xy box (robot base frame, m) of the observation normalization window.
+obs_bounds:
+  object_xy: [[0.2, 0.85], [-0.4, 0.4]]
+
+# Joint velocity / acceleration / jerk limits of the relative arm action: p95 of the human teleop motion.
+jerk_limited_action:
+  max_joint_velocity: [0.140158, 0.371417, 0.120833, 0.401634, 0.158933, 0.283217, 0.239493]
+  max_joint_acceleration: [0.270445, 0.596802, 0.280726, 0.625579, 0.64258, 0.654981, 0.774423]
+  max_joint_jerk: [1.706102, 2.779986, 1.697314, 2.944153, 4.787226, 4.222746, 5.887756]
+
+safety_penalty:
+  illegal_contact:
+    scene_bodies: [table, bowl, banana]
+    allowed_pairs: [[panda_leftfinger, banana], [panda_rightfinger, banana]]

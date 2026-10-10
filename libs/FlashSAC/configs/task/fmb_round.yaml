@@ -1,0 +1,35 @@
+# @package _global_
+# FMB-Round: insert the grasped round peg into the board. Horizon 20 s.
+
+task_name: fmb_round
+
+env:
+  task: libs/real2sim/real2sim/tasks/fmb_round.py
+  env_version: fr3-fmb_round
+  gripper_lock: closed
+
+rfcl:
+  demo_path: data/demo_banks/fmb_round/human_demos.h5
+  init_pose: 'pregrasp:0.03,15'
+
+# Object xy box (robot base frame, m) of the observation normalization window.
+obs_bounds:
+  object_xy: [[0.25, 0.65], [-0.25, 0.15]]
+
+# Joint velocity / acceleration / jerk limits of the relative arm action: p95 of the human teleop motion.
+jerk_limited_action:
+  max_joint_velocity: [0.064647, 0.302688, 0.038798, 0.204246, 0.062298, 0.22632, 0.158129]
+  max_joint_acceleration: [0.282529, 1.014956, 0.214617, 0.815227, 0.380235, 0.976661, 0.772141]
+  max_joint_jerk: [2.163004, 6.546905, 1.738629, 5.853743, 3.615127, 7.643317, 5.826977]
+
+safety_penalty:
+  illegal_contact:
+    scene_bodies: [peg, board, table]
+    allowed_pairs: [[panda_leftfinger, peg], [panda_rightfinger, peg]]
+  # C_jam: peg pressing on the board, axial and lateral force with separate deadbands.
+  obj_press:
+    weight: 1.0e-6
+    deadband_axial: 5.0
+    deadband_lateral: 15.0
+    sat: 100.0
+    surfaces: [board]

@@ -1,0 +1,28 @@
+#usda 1.0
+(
+    doc = "Fixed cameras as static colliders. Built from the camera extrinsics in workcell.json and the sensor datasheet."
+)
+
+def Xform "CellObstacles"
+{
+    def Cube "right_back" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        double size = 2
+        float3 xformOp:scale = (0.095000, 0.042500, 0.042500)
+        matrix4d xformOp:transform = ( (-0.527391195, 0.849287450, -0.023860788, 0.000000000), (0.280555934, 0.200591102, 0.938643456, 0.000000000), (0.801964402, 0.488338053, -0.344062597, 0.000000000), (-0.004107091, -0.357726783, 0.432461858, 1.000000000) )
+        uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:scale"]
+        custom string comment = "D435i body from the calibrated extrinsic plus the datasheet, inflated 30 mm for the unmeasured bracket. Static collider, no rigid body."
+    }
+    def Cube "left_back" (
+        prepend apiSchemas = ["PhysicsCollisionAPI"]
+    )
+    {
+        double size = 2
+        float3 xformOp:scale = (0.095000, 0.042500, 0.042500)
+        matrix4d xformOp:transform = ( (-0.542046845, -0.839156091, -0.044746939, 0.000000000), (-0.377072036, 0.290463001, -0.879458904, 0.000000000), (0.751000583, -0.459835082, -0.473866850, 0.000000000), (0.085770540, 0.364587426, 0.461654305, 1.000000000) )
+        uniform token[] xformOpOrder = ["xformOp:transform", "xformOp:scale"]
+        custom string comment = "D435i body from the calibrated extrinsic plus the datasheet, inflated 30 mm for the unmeasured bracket. Static collider, no rigid body."
+    }
+}

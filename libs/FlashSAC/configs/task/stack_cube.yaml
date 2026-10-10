@@ -1,0 +1,28 @@
+# @package _global_
+# Stack-Cube: stack the red cube on the blue cube. Horizon 30 s.
+
+task_name: stack_cube
+
+env:
+  task: libs/real2sim/real2sim/tasks/stack_cube.py
+  env_version: fr3-stack_cube
+  gripper_lock: null
+
+rfcl:
+  demo_path: data/demo_banks/stack_cube/human_demos.h5
+  init_pose: 'box:0.4125,0.6375,-0.15,0.15,45,0.15'
+
+# Object xy box (robot base frame, m) of the observation normalization window.
+obs_bounds:
+  object_xy: [[0.2, 0.85], [-0.4, 0.4]]
+
+# Joint velocity / acceleration / jerk limits of the relative arm action: p95 of the human teleop motion.
+jerk_limited_action:
+  max_joint_velocity: [0.162807, 0.47455, 0.132507, 0.410502, 0.178389, 0.436152, 0.463817]
+  max_joint_acceleration: [0.325008, 0.824863, 0.323647, 0.790525, 0.797484, 1.001876, 1.325745]
+  max_joint_jerk: [1.940957, 3.79736, 1.900022, 3.955606, 5.664244, 6.155825, 9.193623]
+
+safety_penalty:
+  illegal_contact:
+    scene_bodies: [cube_red, cube_blue, table]
+    allowed_pairs: [[panda_leftfinger, cube_red], [panda_rightfinger, cube_red], [panda_leftfinger, cube_blue], [panda_rightfinger, cube_blue]]

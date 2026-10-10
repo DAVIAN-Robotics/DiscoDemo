@@ -1,0 +1,15 @@
+[project]
+name = "flashsac"
+version = "0.1.0"
+description = "FlashSAC / RFCL training stack (flash_rl package)."
+requires-python = ">=3.11"
+# Dependencies are pinned in the repository-root pyproject.toml; keep this list empty.
+dependencies = []
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+# Only flash_rl is a package; train_rfcl_robolab.py is run as a script.
+include = ["flash_rl", "flash_rl.*"]
