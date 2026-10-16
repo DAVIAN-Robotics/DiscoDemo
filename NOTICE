@@ -1,0 +1,36 @@
+DiscoDemo
+Copyright 2026 The DiscoDemo Authors
+
+This repository is licensed under the Apache License 2.0 (see LICENSE). It includes third-party code and
+assets, each under its own license:
+
+libs/FlashSAC
+  FlashSAC, Copyright (c) 2026 Holiday Robotics. MIT License (libs/FlashSAC/LICENSE), with modifications
+  (docs/flashsac.md).
+  libs/FlashSAC/flash_rl/rfcl is a PyTorch reimplementation of RFCL (Tao et al., "Reverse Forward Curriculum
+  Learning for Extreme Sample and Demonstration Efficiency in Reinforcement Learning", ICLR 2024).
+  libs/FlashSAC/flash_rl/agents/utils/metra.py implements the METRA skill objective (Park et al., "METRA: Scalable
+  Unsupervised RL with Metric-Aware Abstraction", ICLR 2024).
+
+libs/RoboLab
+  RoboLab, Copyright (c) NVIDIA Corporation. Apache License 2.0 (libs/RoboLab/LICENSE), with modifications
+  (docs/robolab.md).
+  Third-party notices: libs/RoboLab/THIRD_PARTY_NOTICES.md.
+
+libs/RoboLab/assets/robots/fr3_official
+  Franka FR3 description (franka_description), Apache License 2.0 (LICENSE and NOTICE in that directory).
+
+libs/RoboLab/assets/objects/ycb
+  YCB-Video object models, MIT License (LICENSE in that directory).
+
+libs/fmb/assets
+  Functional Manipulation Benchmark (FMB) board and peg models, Creative Commons Attribution 4.0
+  International (https://functional-manipulation-benchmark.github.io/). Luo et al., "FMB: a Functional
+  Manipulation Benchmark for Generalizable Robotic Learning", IJRR 2024.
+
+libs/lerobot
+  LeRobot, Copyright 2024 The Hugging Face team. Apache License 2.0 (libs/lerobot/LICENSE), with
+  modifications to the pi0.5 image padding and the video decoder cache (docs/lerobot.md).
+
+The pi0.5 starting checkpoint DAVIAN-Robotics/pi05_droid_jointpos is converted from openpi
+(Physical Intelligence), Apache License 2.0.

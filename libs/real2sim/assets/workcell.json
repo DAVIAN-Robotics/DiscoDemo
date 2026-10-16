@@ -1,0 +1,1529 @@
+{
+  "_note": "Measurement record of the FR3 workcell (robot, table, cameras, objects). Every value is a knob {value, source}; source says whether it was measured on this cell, taken from a reference, or is a placeholder. Code reads it through real2sim.workcell.",
+  "robot": {
+    "model": "fr3",
+    "gripper": "franka_hand",
+    "control_hz": {
+      "value": 20,
+      "source": "measured"
+    },
+    "gripper_dynamics": {
+      "command_delay_close_steps": {
+        "value": 38,
+        "source": "measured"
+      },
+      "command_delay_open_steps": {
+        "value": 24,
+        "source": "measured"
+      },
+      "per_finger_velocity_limit_m_s": {
+        "value": 0.05,
+        "source": "measured"
+      },
+      "close_width_m": {
+        "value": 0.0,
+        "source": "reference"
+      },
+      "stiffness": {
+        "value": 1200.0,
+        "source": "reference"
+      },
+      "damping": {
+        "value": 60.0,
+        "source": "reference"
+      },
+      "close_delay_range_steps": {
+        "value": [
+          25,
+          55
+        ],
+        "source": "measured"
+      },
+      "open_delay_range_steps": {
+        "value": [
+          20,
+          27
+        ],
+        "source": "measured"
+      }
+    },
+    "base_pos": {
+      "value": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "placeholder"
+    },
+    "base_quat": {
+      "value": [
+        1.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "source": "placeholder"
+    },
+    "joint_stiffness": {
+      "value": {
+        "fr3_joint1": 400.0,
+        "fr3_joint2": 400.0,
+        "fr3_joint3": 400.0,
+        "fr3_joint4": 400.0,
+        "fr3_joint5": 400.0,
+        "fr3_joint6": 400.0,
+        "fr3_joint7": 400.0
+      },
+      "source": "reference"
+    },
+    "joint_damping": {
+      "value": {
+        "fr3_joint1": 31.1307,
+        "fr3_joint2": 31.1307,
+        "fr3_joint3": 27.2029,
+        "fr3_joint4": 27.2029,
+        "fr3_joint5": 18.1328,
+        "fr3_joint6": 18.1328,
+        "fr3_joint7": 18.1328
+      },
+      "source": "reference"
+    },
+    "joint_armature": {
+      "value": {
+        "fr3_joint1": 0.6057,
+        "fr3_joint2": 0.6057,
+        "fr3_joint3": 0.4625,
+        "fr3_joint4": 0.4625,
+        "fr3_joint5": 0.2055,
+        "fr3_joint6": 0.2055,
+        "fr3_joint7": 0.2055
+      },
+      "source": "reference"
+    },
+    "joint_friction": {
+      "value": {
+        "fr3_joint1": 0.3014,
+        "fr3_joint2": 0.22935,
+        "fr3_joint3": 0.29205,
+        "fr3_joint4": 0.0869,
+        "fr3_joint5": 0.16885,
+        "fr3_joint6": 0.04235,
+        "fr3_joint7": 0.11
+      },
+      "source": "measured"
+    },
+    "real_osc": {
+      "kp_translation": {
+        "value": 200.0,
+        "source": "measured"
+      },
+      "kp_rotation": {
+        "value": 300.0,
+        "source": "measured"
+      },
+      "kd_translation": {
+        "value": 28.284271247461902,
+        "source": "measured"
+      },
+      "kd_rotation": {
+        "value": 34.64101615137755,
+        "source": "measured"
+      },
+      "action_scale_translation": {
+        "value": 0.4,
+        "source": "measured"
+      },
+      "action_scale_rotation": {
+        "value": 1.0,
+        "source": "measured"
+      },
+      "traj_interpolator": {
+        "value": {
+          "type": "LINEAR_POSE",
+          "time_fraction": 0.1
+        },
+        "source": "measured"
+      },
+      "residual_mass_vec": {
+        "value": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.1,
+          0.5,
+          0.5
+        ],
+        "source": "measured"
+      }
+    },
+    "home_joint_pos": {
+      "value": {
+        "fr3_joint1": 0.0,
+        "fr3_joint2": -0.3674,
+        "fr3_joint3": 0.0003,
+        "fr3_joint4": -2.4717,
+        "fr3_joint5": 0.0002,
+        "fr3_joint6": 2.0419,
+        "fr3_joint7": 0.7846
+      },
+      "source": "measured"
+    },
+    "joint_limits": {
+      "value": {
+        "fr3_joint1": [
+          -2.8973,
+          2.8978
+        ],
+        "fr3_joint2": [
+          -1.7628,
+          1.7628
+        ],
+        "fr3_joint3": [
+          -2.8973,
+          2.8973
+        ],
+        "fr3_joint4": [
+          -3.0718,
+          -0.0698
+        ],
+        "fr3_joint5": [
+          -2.8973,
+          2.8973
+        ],
+        "fr3_joint6": [
+          -0.0175,
+          3.7525
+        ],
+        "fr3_joint7": [
+          -2.8973,
+          2.8973
+        ]
+      },
+      "source": "measured"
+    }
+  },
+  "table": {
+    "height_m": {
+      "value": 0.7,
+      "source": "measured"
+    },
+    "slab_size_m": {
+      "source": "reference",
+      "value": [
+        0.9,
+        0.9,
+        0.03
+      ]
+    },
+    "collision_center_y_m": {
+      "value": 0.0,
+      "source": "reference"
+    },
+    "visual_center_y_m": {
+      "value": 0.0,
+      "source": "reference"
+    },
+    "origin_to_near_edge_m": {
+      "value": 0.12,
+      "source": "measured"
+    },
+    "top_z_m": {
+      "value": 0.01,
+      "source": "measured"
+    },
+    "friction": {
+      "value": 0.5,
+      "source": "placeholder"
+    },
+    "yaw_deg": {
+      "source": "placeholder",
+      "value": 0.0
+    },
+    "surface": {
+      "type": "gray_foam_mat",
+      "base_color_rgb": {
+        "value": [
+          0.52,
+          0.53,
+          0.51
+        ],
+        "source": "reference"
+      },
+      "roughness": {
+        "value": 0.92,
+        "source": "reference"
+      },
+      "metallic": {
+        "value": 0.0,
+        "source": "measured"
+      },
+      "thickness_m": {
+        "value": 0.01,
+        "source": "measured"
+      },
+      "plane_fit": {
+        "value": {
+          "normal_base": [
+            0.0005341649018425888,
+            0.0028135267762446205,
+            0.9999958993590609
+          ],
+          "median_abs_residual_mm": 0.7175186372794067,
+          "p95_abs_residual_mm": 1.4139984522824571,
+          "sampled_frames": 105,
+          "inliers": 70110
+        },
+        "source": "measured"
+      },
+      "albedo_texture": {
+        "value": "assets/textures/gray_foam_ribbed.png",
+        "source": "measured"
+      },
+      "tile_size_m": {
+        "value": 0.3,
+        "source": "measured"
+      },
+      "tile_layout": {
+        "value": [
+          3,
+          3
+        ],
+        "source": "measured"
+      },
+      "mat_center_base_xy_m": {
+        "value": [
+          0.548386788148295,
+          0.0002983779164749123
+        ],
+        "source": "measured"
+      },
+      "mat_yaw_deg": {
+        "value": -1.1882919741859337,
+        "source": "measured"
+      },
+      "tooth_pitch_mm": {
+        "value": 60.0,
+        "source": "measured"
+      },
+      "tooth_depth_mm": {
+        "value": 9.49810861094751,
+        "source": "measured"
+      },
+      "tooth_shoulder_fraction": {
+        "value": 0.10488464692235393,
+        "source": "measured"
+      },
+      "groove_pitch_mm": {
+        "value": 2.4,
+        "source": "reference"
+      },
+      "normal_texture": {
+        "value": "assets/textures/gray_foam_normal.png",
+        "source": "measured"
+      },
+      "tile_rgb_multipliers": {
+        "value": [
+          [
+            [
+              0.9907455468570446,
+              0.992198548709261,
+              0.9915520631975696
+            ],
+            [
+              0.9907455468570446,
+              0.992198548709261,
+              0.9915520631975696
+            ],
+            [
+              0.9907455468570446,
+              0.992198548709261,
+              0.9915520631975696
+            ]
+          ],
+          [
+            [
+              0.9907455468570446,
+              0.992198548709261,
+              0.9915520631975696
+            ],
+            [
+              1.0187418655011238,
+              1.01578271460607,
+              1.0170563414322489
+            ],
+            [
+              0.9907455468570446,
+              0.992198548709261,
+              0.9915520631975696
+            ]
+          ],
+          [
+            [
+              1.0187418655011238,
+              1.01578271460607,
+              1.0170563414322489
+            ],
+            [
+              1.0187418655011238,
+              1.01578271460607,
+              1.0170563414322489
+            ],
+            [
+              0.9907455468570446,
+              0.992198548709261,
+              0.9915520631975696
+            ]
+          ]
+        ],
+        "source": "measured"
+      },
+      "texture_base_srgb": {
+        "value": [
+          224.0,
+          229.0,
+          228.0
+        ],
+        "source": "reference"
+      },
+      "texture_microgeometry": {
+        "value": {
+          "ridge_dark": 8.35,
+          "ridge_light": 3.45,
+          "noise_std": 1.72,
+          "normal_gain": 1.87,
+          "seam_normal_depth": 0.25
+        },
+        "source": "reference"
+      },
+      "grid_vertices_base_xy_m": {
+        "value": [
+          [
+            [
+              0.08452553727521368,
+              -0.43645152667404497
+            ],
+            [
+              0.09005908188187471,
+              -0.13755082980020986
+            ],
+            [
+              0.09685222763497728,
+              0.15592228150499104
+            ],
+            [
+              0.10911758052298502,
+              0.4536766958399623
+            ]
+          ],
+          [
+            [
+              0.3875227496047388,
+              -0.44070159332570497
+            ],
+            [
+              0.39358038925068434,
+              -0.14081284464081747
+            ],
+            [
+              0.4011883095787344,
+              0.1523705917194691
+            ],
+            [
+              0.4088903048063831,
+              0.4474214420046602
+            ]
+          ],
+          [
+            [
+              0.6914984966258054,
+              -0.44725032646501217
+            ],
+            [
+              0.6983142800259993,
+              -0.14762525635808607
+            ],
+            [
+              0.7060145402752849,
+              0.1490959710864268
+            ],
+            [
+              0.708630960212449,
+              0.44116565446382094
+            ]
+          ],
+          [
+            [
+              0.993258647696648,
+              -0.45475331699662846
+            ],
+            [
+              0.9997441939012713,
+              -0.15510771638134263
+            ],
+            [
+              1.0067446694218152,
+              0.14366202527659303
+            ],
+            [
+              1.0082935912867084,
+              0.4349071335113797
+            ]
+          ]
+        ],
+        "source": "measured"
+      },
+      "tooth_polarity": {
+        "value": -1,
+        "source": "measured"
+      },
+      "tooth_outward_flare": {
+        "value": true,
+        "source": "measured"
+      },
+      "tile_color_ownership": {
+        "value": "mesh_material",
+        "source": "measured"
+      },
+      "draw_outer_texture_seam": {
+        "value": false,
+        "source": "measured"
+      },
+      "normal_map_encoding": {
+        "value": "tangent_rgb_01",
+        "source": "reference"
+      }
+    }
+  },
+  "backdrop": {
+    "curtain_x_m": {
+      "value": 1.0869169184589802,
+      "source": "reference"
+    },
+    "wall_y_m": {
+      "value": -0.5396392,
+      "source": "measured"
+    },
+    "curtain_y_max_m": {
+      "value": 1.15,
+      "source": "reference"
+    },
+    "curtain_srgb": {
+      "value": [
+        53.0,
+        64.0,
+        61.0
+      ],
+      "source": "reference"
+    },
+    "wall_srgb": {
+      "value": [
+        255.0,
+        255.0,
+        255.0
+      ],
+      "source": "reference"
+    },
+    "wall_fill_intensity": {
+      "value": 550.0,
+      "source": "reference"
+    },
+    "curtain_fold_depth_m": {
+      "value": 0.03,
+      "source": "reference"
+    },
+    "curtain_fold_pitch_m": {
+      "value": 0.22,
+      "source": "reference"
+    },
+    "wrist_lab_background": {
+      "enabled": {
+        "value": true,
+        "source": "reference"
+      },
+      "usd": {
+        "value": "assets/scenes/wrist_background.usda",
+        "source": "reference"
+      },
+      "mode": {
+        "value": "selective_multiframe_static_rgbd_plus_explicit_base_station",
+        "source": "reference"
+      },
+      "replace_mount_plate_visual": {
+        "value": true,
+        "source": "reference"
+      },
+      "replace_franka_table_visual": {
+        "value": true,
+        "source": "reference"
+      }
+    }
+  },
+  "mount_plate": {
+    "side_m": {
+      "value": 0.25,
+      "source": "measured"
+    },
+    "thickness_m": {
+      "value": 0.03,
+      "source": "measured"
+    },
+    "gap_to_table_m": {
+      "value": 0.03,
+      "source": "measured"
+    }
+  },
+  "cameras": {
+    "left_back": {
+      "mount": "scene",
+      "parent_frame": "base",
+      "role": "exo",
+      "prim": "left_back_cam",
+      "serial": "347622076599",
+      "hw": [
+        480,
+        640
+      ],
+      "flip_180": false,
+      "K": {
+        "value": [
+          [
+            603.9806518554688,
+            0.0,
+            327.59228515625
+          ],
+          [
+            0.0,
+            603.179931640625,
+            255.96353149414062
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      },
+      "dist": {
+        "value": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "source": "measured"
+      },
+      "rgb_gain": {
+        "value": [
+          1.1,
+          1.08,
+          1.06
+        ],
+        "source": "reference"
+      },
+      "T_parent_cam": {
+        "value": [
+          [
+            -0.542046844959259,
+            -0.3770720362663269,
+            0.7510005831718445,
+            0.08577053993940353
+          ],
+          [
+            -0.8391560912132263,
+            0.29046300053596497,
+            -0.45983508229255676,
+            0.3645874261856079
+          ],
+          [
+            -0.04474693909287453,
+            -0.8794589042663574,
+            -0.47386685013771057,
+            0.46165430545806885
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      },
+      "T_parent_cam_render": {
+        "note": "render-only pose: T_parent_cam refined so rendered object silhouettes match the real camera images; T_parent_cam stays the calibrated extrinsic",
+        "value": [
+          [
+            -0.56470255,
+            -0.35989147,
+            0.74269049,
+            0.01155804
+          ],
+          [
+            -0.82379332,
+            0.30005933,
+            -0.4809667,
+            0.4349975
+          ],
+          [
+            -0.04975539,
+            -0.88342658,
+            -0.46592046,
+            0.51325085
+          ],
+          [
+            0,
+            0,
+            0,
+            1
+          ]
+        ],
+        "source": "measured"
+      },
+      "mtf": {
+        "blur_sigma_px": {
+          "value": 0.45,
+          "source": "reference"
+        },
+        "unsharp_amount": {
+          "value": 0.0,
+          "source": "reference"
+        }
+      }
+    },
+    "right_back": {
+      "mount": "scene",
+      "parent_frame": "base",
+      "role": "exo",
+      "prim": "right_back_cam",
+      "serial": "344322073290",
+      "hw": [
+        480,
+        640
+      ],
+      "flip_180": false,
+      "K": {
+        "value": [
+          [
+            604.5098876953125,
+            0.0,
+            329.29290771484375
+          ],
+          [
+            0.0,
+            604.1793212890625,
+            253.94403076171875
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      },
+      "dist": {
+        "value": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "source": "measured"
+      },
+      "T_parent_cam": {
+        "value": [
+          [
+            -0.5273911952972412,
+            0.28055593371391296,
+            0.8019644021987915,
+            -0.0041070906445384026
+          ],
+          [
+            0.8492874503135681,
+            0.2005911022424698,
+            0.48833805322647095,
+            -0.3577267825603485
+          ],
+          [
+            -0.023860787972807884,
+            0.9386434555053711,
+            -0.34406259655952454,
+            0.43246185779571533
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      }
+    },
+    "wrist": {
+      "mount": "robot",
+      "parent_frame": "panda_hand",
+      "role": "wrist",
+      "prim": "panda_hand/wrist_cam",
+      "serial": "409122272282",
+      "hw": [
+        480,
+        640
+      ],
+      "flip_180": true,
+      "K": {
+        "value": [
+          [
+            395.05,
+            0.0,
+            321.66
+          ],
+          [
+            0.0,
+            392.68,
+            235.97
+          ],
+          [
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      },
+      "dist": {
+        "value": [
+          -0.05956,
+          0.0588,
+          -0.00644,
+          -6e-05,
+          -0.02934
+        ],
+        "source": "measured"
+      },
+      "rgb_gain": {
+        "value": [
+          1.0,
+          0.98,
+          0.96
+        ],
+        "source": "measured"
+      },
+      "horizontal_gain": {
+        "value": [
+          0.77,
+          1.34
+        ],
+        "source": "reference"
+      },
+      "T_parent_cam": {
+        "value": [
+          [
+            -0.011876204982399937,
+            0.7368649840354918,
+            0.6759356260299682,
+            -0.05770035088062285
+          ],
+          [
+            -0.9999230504035952,
+            -0.006323326379060747,
+            -0.010675355792045595,
+            -0.007719715591520073
+          ],
+          [
+            -0.0035921342205256224,
+            -0.6760103702545166,
+            0.7368833422660828,
+            0.05897935535907739
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      },
+      "T_fr3_hand_tcp_cam": {
+        "value": [
+          [
+            -0.01187620498239994,
+            0.7368649840354919,
+            0.6759356260299683,
+            -0.057700350880622864
+          ],
+          [
+            -0.999923050403595,
+            -0.006323326379060745,
+            -0.010675355792045593,
+            -0.007719715591520071
+          ],
+          [
+            -0.0035921342205256224,
+            -0.6760103702545166,
+            0.7368833422660828,
+            -0.044420644640922546
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      },
+      "mtf": {
+        "blur_sigma_px": {
+          "value": 0.0,
+          "source": "reference"
+        },
+        "unsharp_amount": {
+          "value": 1.2,
+          "source": "reference"
+        }
+      }
+    }
+  },
+  "object": {
+    "type": "cube",
+    "size_m": {
+      "value": 0.05,
+      "source": "placeholder"
+    },
+    "mass_kg": {
+      "value": 0.05,
+      "source": "placeholder"
+    },
+    "friction": {
+      "value": 0.5,
+      "source": "placeholder"
+    },
+    "spawn_pos": {
+      "value": [
+        0.5,
+        0.0,
+        0.025
+      ],
+      "source": "placeholder"
+    },
+    "goal_pos": {
+      "value": [
+        0.5,
+        0.25,
+        0.025
+      ],
+      "source": "placeholder"
+    },
+    "goal_tolerance_m": {
+      "value": 0.05,
+      "source": "placeholder"
+    },
+    "aruco": {
+      "dict": "DICT_4X4_50",
+      "id": 0,
+      "marker_mm": {
+        "value": 30.0,
+        "source": "placeholder"
+      }
+    }
+  },
+  "sysid": {
+    "latency_steps": {
+      "value": 1,
+      "source": "measured"
+    },
+    "effective_stiffness_n_per_m": {
+      "value": 80.0,
+      "source": "measured"
+    },
+    "first_order_tau_s": {
+      "value": 0.321,
+      "source": "measured"
+    },
+    "tip_friction_bias_n": {
+      "value": {
+        "x": {
+          "friction": 1.06,
+          "bias": 0.58
+        },
+        "z": {
+          "friction": 0.53,
+          "bias": 0.79
+        }
+      },
+      "source": "measured"
+    },
+    "impedance_gains": {
+      "value": {
+        "kp_translation": 200.0,
+        "kp_rotation": 300.0,
+        "kd_translation": 28.284271247461902,
+        "kd_rotation": 34.64101615137755,
+        "action_scale_translation": 0.4,
+        "action_scale_rotation": 1.0
+      },
+      "source": "measured"
+    },
+    "gate_b_holdout": {
+      "value": {
+        "run": "data/stageC_20mm/stageC_holdout",
+        "dc_offset_mm": [
+          8.0,
+          -1.0,
+          6.7
+        ],
+        "ac_tracking_rms_mm": 9.27,
+        "commanded_pp_mm": [
+          31.8,
+          31.3,
+          31.0
+        ],
+        "measured_pp_mm": [
+          8.9,
+          8.0,
+          9.8
+        ],
+        "start_end_drift_mm": 1.62
+      },
+      "source": "measured"
+    }
+  },
+  "render_appearance": {
+    "rendering_mode": "quality",
+    "robot_rgb": {
+      "value": [
+        0.95,
+        1.0,
+        1.0
+      ],
+      "source": "reference"
+    },
+    "robot_roughness": {
+      "value": 0.52,
+      "source": "reference"
+    },
+    "robot_materials": {
+      "joint_metal": {
+        "value": {
+          "rgb": [
+            0.62,
+            0.64,
+            0.66
+          ],
+          "roughness": 0.26,
+          "metallic": 0.3
+        },
+        "source": "measured"
+      },
+      "polished_metal": {
+        "value": {
+          "rgb": [
+            0.72,
+            0.74,
+            0.76
+          ],
+          "roughness": 0.18,
+          "metallic": 0.45
+        },
+        "source": "measured"
+      },
+      "eef_gray": {
+        "value": {
+          "rgb": [
+            0.46,
+            0.48,
+            0.5
+          ],
+          "roughness": 0.32,
+          "metallic": 0.18
+        },
+        "source": "measured"
+      },
+      "seam_black": {
+        "value": {
+          "rgb": [
+            0.08,
+            0.085,
+            0.09
+          ],
+          "roughness": 0.58,
+          "metallic": 0.05
+        },
+        "source": "measured"
+      }
+    },
+    "wrist_rig": {
+      "enabled": true,
+      "show_mount_geometry": false,
+      "camera_prim": "panda_hand/wrist_cam",
+      "T_hand_cable_frame": {
+        "value": [
+          [
+            -0.18030628693306114,
+            0.7109212188615399,
+            -0.6797651531704423,
+            0.0949676475916905
+          ],
+          [
+            -0.9788157976259023,
+            -0.19783807637967327,
+            0.05272314342259789,
+            -0.011248713811012256
+          ],
+          [
+            -0.09700142890896912,
+            0.6748711848247879,
+            0.7315323688551352,
+            0.021665545276544823
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "source": "measured"
+      },
+      "show_face_band": true,
+      "face_band_center_hand_m": {
+        "value": [
+          -0.033,
+          0.0,
+          0.035
+        ],
+        "source": "measured"
+      },
+      "face_band_size_m": {
+        "value": [
+          0.004,
+          0.12,
+          0.012
+        ],
+        "source": "measured"
+      },
+      "housing_size_m": {
+        "value": [
+          0.042,
+          0.042,
+          0.023
+        ],
+        "source": "reference"
+      },
+      "housing_center_cam_m": {
+        "value": [
+          0.0,
+          0.0,
+          -0.0115
+        ],
+        "source": "reference"
+      },
+      "lens_radius_m": {
+        "value": 0.006,
+        "source": "measured"
+      },
+      "bracket_strut_center_cam_m": {
+        "value": [
+          -0.007,
+          -0.072,
+          0.016
+        ],
+        "source": "measured"
+      },
+      "bracket_strut_size_m": {
+        "value": [
+          0.016,
+          0.075,
+          0.014
+        ],
+        "source": "measured"
+      },
+      "bracket_plate_center_cam_m": {
+        "value": [
+          -0.007,
+          -0.111,
+          0.025
+        ],
+        "source": "measured"
+      },
+      "bracket_plate_size_m": {
+        "value": [
+          0.052,
+          0.018,
+          0.014
+        ],
+        "source": "measured"
+      },
+      "cable_points_cam_m": {
+        "value": [
+          [
+            0.012,
+            -0.032,
+            -0.014
+          ],
+          [
+            0.008,
+            -0.028,
+            -0.016
+          ],
+          [
+            0.004,
+            -0.024,
+            -0.018
+          ],
+          [
+            0.0,
+            -0.02,
+            -0.02
+          ]
+        ],
+        "source": "reference"
+      },
+      "cable_width_m": {
+        "value": 0.0045,
+        "source": "reference"
+      },
+      "cable_cast_shadows": false,
+      "dynamic_bridge_visible": true,
+      "cable_steps_per_span": {
+        "value": 16,
+        "source": "reference"
+      },
+      "tether_enabled": true,
+      "tether_start_cam_m": {
+        "value": [
+          0.0,
+          -0.02,
+          -0.02
+        ],
+        "source": "reference"
+      },
+      "tether_departure_control_cam_m": {
+        "value": [
+          0.012,
+          -0.032,
+          -0.014
+        ],
+        "source": "reference"
+      },
+      "bridge_end_link": "panda_link5",
+      "bridge_departure_control_cam_m": {
+        "value": [
+          0.06945690494620486,
+          -0.08854833517712388,
+          -0.019506196862364725
+        ],
+        "source": "reference"
+      },
+      "bridge_approach_control_link_m": {
+        "value": [
+          -0.014195651728427794,
+          0.09061538518227193,
+          0.003221000910666044
+        ],
+        "source": "reference"
+      },
+      "bridge_attachment_link_m": {
+        "value": [
+          0.04342249227750375,
+          0.11170301723844589,
+          -0.07266602694901064
+        ],
+        "source": "reference"
+      },
+      "bridge_steps": {
+        "value": 16,
+        "source": "reference"
+      },
+      "tether_guide_base_m": {
+        "value": [
+          0.018725017185766656,
+          0.1488283638596245,
+          0.007844473768466885
+        ],
+        "source": "reference"
+      },
+      "tether_stow_guide_base_m": {
+        "value": [
+          1.106480197749695,
+          0.06680337204616534,
+          0.5291811080217286
+        ],
+        "source": "reference"
+      },
+      "tether_stow_anchor_base_m": {
+        "value": [
+          0.5014,
+          -1.0407,
+          0.6608
+        ],
+        "source": "measured"
+      },
+      "tether_deploy_hand_z_low_m": {
+        "value": 0.32,
+        "source": "measured"
+      },
+      "tether_deploy_hand_z_high_m": {
+        "value": 0.35,
+        "source": "measured"
+      },
+      "tether_visible_deploy_min": {
+        "value": 0.97,
+        "source": "measured"
+      },
+      "tether_anchor_base_m": {
+        "value": [
+          0.018725017185766656,
+          0.1488283638596245,
+          -0.55
+        ],
+        "source": "reference"
+      },
+      "tether_bow_base_m": {
+        "value": [
+          -0.04386016901791087,
+          0.059124666920330846,
+          0.27596512349184793
+        ],
+        "source": "reference"
+      },
+      "tether_steps": {
+        "value": 24,
+        "source": "reference"
+      },
+      "plug_size_m": {
+        "value": [
+          0.014,
+          0.01,
+          0.018
+        ],
+        "source": "reference"
+      },
+      "service_departure_control_link_m": {
+        "value": [
+          0.07159585759375242,
+          0.09035139337996652,
+          -0.09495676678138554
+        ],
+        "source": "reference"
+      },
+      "bridge_bow_base_m": {
+        "value": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "source": "reference"
+      },
+      "bridge_camera_clearance_m": {
+        "value": 0.11,
+        "source": "reference"
+      }
+    },
+    "sphere_intensity": {
+      "value": 1200.0,
+      "source": "reference"
+    },
+    "dome_intensity": {
+      "value": 50.0,
+      "source": "reference"
+    },
+    "sphere_radius_m": {
+      "value": 0.12,
+      "source": "reference"
+    },
+    "banana_diffuse_tint": {
+      "value": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "source": "reference"
+    },
+    "banana_diffuse_texture": {
+      "value": "assets/textures/banana_real_colorfit.png",
+      "source": "reference"
+    },
+    "banana_roughness": {
+      "value": 0.48,
+      "source": "reference"
+    },
+    "banana_emission": {
+      "value": {
+        "color": [
+          0.75,
+          0.47,
+          0.003
+        ],
+        "intensity": 0.0
+      },
+      "source": "reference"
+    },
+    "banana_preview_override": {
+      "value": {
+        "enabled": true,
+        "emission_scale": 0.4
+      },
+      "source": "reference"
+    },
+    "bowl_materials": {
+      "value": {
+        "red": {
+          "rgb": [
+            0.49,
+            0.0123,
+            0.00533
+          ],
+          "roughness": 0.2,
+          "specular_rgb": [
+            0.28,
+            0.28,
+            0.28
+          ],
+          "clearcoat": 0.03,
+          "clearcoat_roughness": 0.28
+        },
+        "black": {
+          "rgb": [
+            0.015996294,
+            0.01850022,
+            0.011612245
+          ],
+          "roughness": 0.38,
+          "specular_rgb": [
+            0.42,
+            0.43,
+            0.4
+          ],
+          "clearcoat": 0.06,
+          "clearcoat_roughness": 0.3
+        }
+      },
+      "source": "measured"
+    },
+    "bowl_rgb_multiplier": {
+      "value": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "source": "reference"
+    },
+    "bowl_roughness_multiplier": {
+      "value": 1.0,
+      "source": "reference"
+    },
+    "sphere_position_base_m": {
+      "value": [
+        0.55,
+        1.2,
+        1.1
+      ],
+      "source": "reference"
+    }
+  },
+  "banana": {
+    "usd": {
+      "value": "assets/objects/ycb/banana_real.usd",
+      "source": "measured"
+    },
+    "mass_kg": {
+      "value": 0.12,
+      "source": "reference"
+    },
+    "contact_material": {
+      "static_friction": {
+        "value": 2.0,
+        "source": "reference"
+      },
+      "dynamic_friction": {
+        "value": 2.0,
+        "source": "reference"
+      },
+      "restitution": {
+        "value": 0.0,
+        "source": "reference"
+      },
+      "friction_combine_mode": "max"
+    },
+    "chord_mm": {
+      "value": 180.0,
+      "source": "measured"
+    },
+    "sagitta_mm": {
+      "value": 60.0,
+      "source": "measured"
+    },
+    "grasp_thickness_mm": {
+      "value": 32.0,
+      "source": "measured"
+    },
+    "spawn_pos": {
+      "value": [
+        0.4125580260229016,
+        0.03364450982907546,
+        0.0275
+      ],
+      "source": "measured"
+    },
+    "yaw_deg": {
+      "value": -87.58969829891937,
+      "source": "measured"
+    }
+  },
+  "bowl": {
+    "usd": {
+      "value": "assets/objects/ycb/bowl_real_compound.usda",
+      "source": "measured"
+    },
+    "mass_kg": {
+      "value": 0.5,
+      "source": "reference"
+    },
+    "contact_material": {
+      "static_friction": {
+        "value": 2.0,
+        "source": "reference"
+      },
+      "dynamic_friction": {
+        "value": 2.0,
+        "source": "reference"
+      },
+      "restitution": {
+        "value": 0.0,
+        "source": "reference"
+      },
+      "friction_combine_mode": "max"
+    },
+    "top_dia_mm": {
+      "value": 170.0,
+      "source": "measured"
+    },
+    "bottom_dia_mm": {
+      "value": 95.0,
+      "source": "measured"
+    },
+    "height_mm": {
+      "value": 73.0,
+      "source": "measured"
+    },
+    "wall_mm": {
+      "value": 5.0,
+      "source": "measured"
+    },
+    "spawn_pos": {
+      "value": [
+        0.7400446604000849,
+        -0.0005604469751975261,
+        0.01
+      ],
+      "source": "measured"
+    }
+  }
+}

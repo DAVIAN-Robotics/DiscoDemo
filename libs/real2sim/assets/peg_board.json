@@ -1,0 +1,83 @@
+{
+  "_note": "Peg-in-hole knobs (FMB board_0 + two pegs on the FR3 cell). Assets: libs/fmb/assets (STEP -> USD with baked PhysX). Dimensions and hole offsets: real2sim/peg_board.py.",
+  "peg_board": {
+    "board_usd": {
+      "value": "libs/fmb/assets/boards/board_0.usd",
+      "source": "reference"
+    },
+    "peg_round_usd": {
+      "value": "libs/fmb/assets/pegs/peg_4981x4981_l100.usd",
+      "source": "reference"
+    },
+    "peg_sqcirc_usd": {
+      "value": "libs/fmb/assets/pegs/peg_2376x2376_l100.usd",
+      "source": "reference"
+    },
+    "board_spawn_z_m": {
+      "value": 0.032,
+      "source": "measured",
+      "_source_detail": "Measured foam-mat top (same as the canonical table.top_z_m override). The board USD origin is its bottom face."
+    },
+    "peg_spawn_height_above_board_m": {
+      "value": 0.2,
+      "source": "reference",
+      "_source_detail": "Scene nominal only; the pregrasp reset event places the peg relative to the hand."
+    },
+    "randomize": {
+      "_note": "Must match the init_pose string 'pregrasp:0.03,15'.",
+      "xy_half_m": {
+        "value": 0.03,
+        "source": "reference"
+      },
+      "yaw_half_deg": {
+        "value": 15.0,
+        "source": "reference"
+      }
+    },
+    "color_srgb": {
+      "_note": "0-255 sRGB, provisional.",
+      "board": {
+        "value": [
+          200,
+          40,
+          40
+        ],
+        "source": "placeholder"
+      },
+      "peg_round": {
+        "value": [
+          190,
+          160,
+          220
+        ],
+        "source": "placeholder"
+      },
+      "peg_sqcirc": {
+        "value": [
+          240,
+          120,
+          170
+        ],
+        "source": "placeholder"
+      }
+    },
+    "board_mass_measured_kg": {
+      "value": 0.345,
+      "source": "measured",
+      "_source_detail": "Weighed. Not used directly: the board uses board_mass_kg below, and the pegs use the mass from the USD density (round 242 g, sqcirc 150 g)."
+    },
+    "peg_round_mass_measured_kg": {
+      "value": 0.032,
+      "source": "measured"
+    },
+    "peg_sqcirc_mass_measured_kg": {
+      "value": 0.027,
+      "source": "measured"
+    },
+    "board_mass_kg": {
+      "value": 2.4,
+      "source": "reference",
+      "_source_detail": "7.0x the measured 345 g, a deliberate scale-up in line with the other objects of the cell (pegs 5.6-7.5x, banana 7.1x), so the dynamic board is not pushed by insertion forces."
+    }
+  }
+}
