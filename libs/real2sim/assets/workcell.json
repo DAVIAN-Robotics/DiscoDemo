@@ -579,7 +579,6 @@
       "parent_frame": "base",
       "role": "exo",
       "prim": "left_back_cam",
-      "serial": "347622076599",
       "hw": [
         480,
         640
@@ -698,7 +697,6 @@
       "parent_frame": "base",
       "role": "exo",
       "prim": "right_back_cam",
-      "serial": "344322073290",
       "hw": [
         480,
         640
@@ -769,7 +767,6 @@
       "parent_frame": "panda_hand",
       "role": "wrist",
       "prim": "panda_hand/wrist_cam",
-      "serial": "409122272282",
       "hw": [
         480,
         640

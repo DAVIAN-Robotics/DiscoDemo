@@ -49,7 +49,7 @@ def cube_stacked(
     container : str
         Bottom cube.
     stack_height_m, height_tolerance_m, xy_tolerance_m, settle_speed
-        Success tolerances from ``assets/tasks/fr3_cube_stack.json``.
+        Success tolerances from ``assets/tasks/stack_cube.json``.
 
     Returns
     -------

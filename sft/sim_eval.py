@@ -41,8 +41,7 @@ WRIST_SENSOR = "wrist_cam"
 def task_env_kwargs(task: str) -> dict[str, Any]:
     """Env arguments of ``task`` for pi0.5: the task's plant with absolute joint-position targets.
 
-    The insertion tasks are scored on the insertion alone: the fixed-board condition of RL training and data
-    generation is not applied to the downstream policy.
+    The insertion tasks are scored on the insertion alone.
 
     Parameters
     ----------

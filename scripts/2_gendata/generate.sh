@@ -16,8 +16,7 @@ N_KEEP=${5:-3000}; N_SHARDS=${6:-4}
 NUM_ENVS=${NUM_ENVS:-2048}       # collection envs (no rendering)
 RENDER_ENVS=${RENDER_ENVS:-32}   # trajectories rendered in parallel
 
-# Successes to collect before filtering, as for the paper datasets (the export filter keeps about 54% / 49% / 24% /
-# 79% of the DiscoDemo rollouts). Resumable with --resume-from-existing.
+# Successes to collect before filtering, as for the paper datasets. Resumable with --resume-from-existing.
 case "$TASK" in
   pnp_banana|stack_cube|fmb_sqcircle) POOL=10000 ;; fmb_round) POOL=32000 ;;
   *) echo "unknown task: $TASK (pnp_banana | stack_cube | fmb_round | fmb_sqcircle)" >&2; exit 1 ;;
