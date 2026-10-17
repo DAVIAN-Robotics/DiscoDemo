@@ -103,16 +103,6 @@ class Pi05Agent:
         return np.concatenate([arm, 2.0 * out[:, 7:8] - 1.0], axis=1).astype(np.float32)
 
 
-def training_seed(checkpoint: str) -> int:
-    """Seed in the ``train_config.json`` of a ``pretrained_model`` directory or hub repo."""
-    path = Path(checkpoint) / "train_config.json"
-    if not Path(checkpoint).is_dir():
-        from huggingface_hub import hf_hub_download
-
-        path = Path(hf_hub_download(checkpoint, "train_config.json"))
-    return int(json.loads(path.read_text())["seed"])
-
-
 def evaluate(checkpoint: str, task: str, seed: int, out_dir: Path, num_envs: int, episode_videos: bool) -> dict:
     """Run the evaluation and write ``result.json`` (and the videos) to ``out_dir``."""
     from flash_rl.envs.robolab import make_robolab_rl_env
@@ -180,13 +170,12 @@ def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("checkpoint", help="pretrained_model directory or hub repo id")
     ap.add_argument("--task", required=True, choices=TASKS)
-    ap.add_argument("--seed", type=int, help="default: from the checkpoint's train_config.json")
+    ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--out-dir", type=Path, required=True)
     ap.add_argument("--num-envs", type=int, default=NUM_EPISODES)
     ap.add_argument("--episode-videos", action="store_true", help="one video per episode + initial poses")
     a = ap.parse_args()
-    seed = training_seed(a.checkpoint) if a.seed is None else a.seed
-    evaluate(a.checkpoint, a.task, seed, a.out_dir, a.num_envs, a.episode_videos)
+    evaluate(a.checkpoint, a.task, a.seed, a.out_dir, a.num_envs, a.episode_videos)
 
 
 if __name__ == "__main__":
