@@ -1,0 +1,115 @@
+# @package _global_
+# DiscoDemo generator: RFCL reverse curriculum + FlashSAC on the real-to-sim FR3 workcell.
+# The values below are the paper hyperparameters; task/<task>.yaml and method/<method>.yaml add the rest.
+#   bash scripts/1_rl/train.sh pnp_banana discodemo
+
+defaults:
+- _self_
+- task: pnp_banana
+- method: discodemo
+
+# Run
+project_name: DiscoDemo
+entity_name: null
+group_name: ${task_name}
+exp_name: ${method_name}-${task_name}
+seed: 0
+logger_type: wandb  # wandb | tensorboard
+save_path: libs/FlashSAC/models/${task_name}/${exp_name}/seed${seed}-TIMESTAMP
+# Resume: a step<N> checkpoint dir written by this script (also restores the replay buffer and wandb run).
+agent_load_path: null
+
+num_env_steps: 50_000_000
+num_train_envs: 2048
+updates_per_interaction_step: 64
+gamma: 0.99
+n_step: 8
+
+env:
+  workcell: libs/real2sim/assets/workcell.json
+
+# Success: the task predicate must hold for this many control steps (1 s at 20 Hz).
+success_hold_steps: 20
+
+agent:
+  agent_type: flashSAC
+  seed: ${seed}
+  device_type: cuda
+  # Paper value. GPU memory grows with the stored transitions (about 0.4 KB each); a 50M-step run
+  # stores 50M of them (about 20 GB) and never reaches this cap.
+  buffer_max_length: 100_000_000
+  buffer_min_length: 5000
+  buffer_device_type: cuda
+  sample_batch_size: 2048
+  normalize_reward: true
+  normalized_G_max: 5.0
+  asymmetric_observation: false
+  # The learning-rate schedule runs over env steps.
+  learning_rate_init: 3.0e-4
+  learning_rate_peak: 3.0e-4
+  learning_rate_end: 1.5e-4
+  learning_rate_warmup_rate: 1.0e-6
+  learning_rate_warmup_step: ${eval:'int(${agent.learning_rate_warmup_rate} * ${num_env_steps})'}
+  learning_rate_decay_rate: 1.0
+  learning_rate_decay_step: ${eval:'int(${agent.learning_rate_decay_rate} * ${num_env_steps})'}
+  actor_num_blocks: 2
+  actor_hidden_dim: 128
+  actor_bc_alpha: 0.0
+  actor_noise_zeta_mu: 2.0
+  actor_noise_zeta_max: 16
+  actor_update_period: 2
+  critic_num_blocks: 2
+  critic_hidden_dim: 256
+  critic_num_bins: 101
+  critic_min_v: ${eval:'-${agent.normalized_G_max}'}
+  critic_max_v: ${eval:'${agent.normalized_G_max}'}
+  critic_target_update_tau: 0.01
+  temp_initial_value: 0.01
+  temp_target_sigma: 0.15
+  temp_target_entropy: null
+  gamma: ${gamma}
+  n_step: ${n_step}
+  use_compile: true
+  compile_mode: auto
+  use_amp: true
+  load_optimizer: true
+  load_reward_normalizer: true
+
+rfcl:
+  # Fraction of each SAC batch drawn from the demonstration transitions.
+  demo_ratio: 0.5
+  # Demo frames kept after the first success.
+  truncate_after_success: 50
+  reverse:
+    reverse_step_size: 16
+    # A frontier moves back once the last `frontier_window` episodes started there reach this success rate.
+    advance_threshold: 0.9
+    frontier_window: 10
+    minimum_episode_steps: 30
+  # Switch to the forward phase once this fraction of the demonstrations is solved.
+  solved_frac_threshold: 0.5
+
+eval_worker:
+  num_envs: 50
+
+# METRA skill objective (used when method skill.alpha > 0).
+skill:
+  phi_hidden: [256, 256]
+  phi_lr: 1.0e-4
+  dual_slack: 1.0e-3
+  lam_init: 1.0
+
+# C_contact: contact force between the listed robot links and scene bodies, except the task's allowed pairs.
+safety_penalty:
+  illegal_contact:
+    weight: 1.0e-4
+    sat: 100.0
+    robot_bodies: [panda_link5, panda_link6, panda_link7, panda_hand, panda_leftfinger, panda_rightfinger]
+
+# Observation normalization window (robot base frame, m); joint limits come from the articulation.
+obs_bounds:
+  object_z_m: [0.0, 0.6]
+  eef_box_m:
+    x: [0.20, 0.85]
+    y: [-0.45, 0.45]
+    z: [0.0, 0.7]
