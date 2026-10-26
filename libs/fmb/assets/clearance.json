@@ -1,0 +1,1939 @@
+{
+  "clearance_total_mm": 3.0,
+  "clearance_per_side_mm": 1.5,
+  "clearance_per_side_m": 0.0015,
+  "n_pegs": 54,
+  "n_unique_prong_sections": 27,
+  "n_two_tier_pegs": 18,
+  "lengths_mm": [
+    100,
+    150
+  ],
+  "n_holes_total": 39,
+  "n_peg_holes": 39,
+  "n_confident_peg_holes": 27,
+  "ambiguity_note": "FMB states 9 holes per board, but the CAD mid-section has 13: some round mounting holes match a round prong within the clearance and are also labelled peg_hole. The CAD has no labels, so they cannot be told apart by size; those entries have confident=false. Pick target pegs from confident=true holes.",
+  "peg_holes_per_board": {
+    "0": 13,
+    "1": 13,
+    "2": 13
+  },
+  "pegs": [
+    {
+      "solid_index": 0,
+      "bbox_long_mm": 63.60225300000012,
+      "bbox_short_mm": 24.46240499999925,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 24.462405000000118,
+      "short_mm": 24.462404999999023,
+      "aspect": 1.0000000000000446,
+      "section_area_mm2": 591.012282172785,
+      "shape_key": [
+        1.0,
+        0.988
+      ],
+      "part_id": "peg_24.46x24.46_l100"
+    },
+    {
+      "solid_index": 1,
+      "bbox_long_mm": 63.35999999999212,
+      "bbox_short_mm": 59.11568479189498,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 19.007999999999996,
+      "short_mm": 19.00799999999998,
+      "aspect": 1.0000000000000007,
+      "section_area_mm2": 283.76754829363404,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_19.01x19.01_l100"
+    },
+    {
+      "solid_index": 2,
+      "bbox_long_mm": 52.800000000000125,
+      "bbox_short_mm": 19.80000000000004,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 19.800000000000068,
+      "short_mm": 19.80000000000004,
+      "aspect": 1.0000000000000013,
+      "section_area_mm2": 307.9074959783368,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_19.80x19.80_l100"
+    },
+    {
+      "solid_index": 3,
+      "bbox_long_mm": 43.200000000000045,
+      "bbox_short_mm": 28.800000000000004,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 43.19999927196142,
+      "short_mm": 28.80000001243541,
+      "aspect": 1.4999999740732048,
+      "section_area_mm2": 976.7069020445425,
+      "shape_key": [
+        1.5,
+        0.785
+      ],
+      "part_id": "peg_43.20x28.80_l100"
+    },
+    {
+      "solid_index": 4,
+      "bbox_long_mm": 35.35372709561602,
+      "bbox_short_mm": 33.85015747830733,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 35.35372709561602,
+      "short_mm": 33.85015747830733,
+      "aspect": 1.0444183935709086,
+      "section_area_mm2": 578.8767506756827,
+      "shape_key": [
+        1.044,
+        0.484
+      ],
+      "part_id": "peg_35.35x33.85_l100"
+    },
+    {
+      "solid_index": 5,
+      "bbox_long_mm": 38.610000000000014,
+      "bbox_short_mm": 23.16600000000011,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 38.610000000000014,
+      "short_mm": 23.166000000000103,
+      "aspect": 1.6666666666666599,
+      "section_area_mm2": 648.2696280804364,
+      "shape_key": [
+        1.667,
+        0.725
+      ],
+      "part_id": "peg_38.61x23.17_l100"
+    },
+    {
+      "solid_index": 6,
+      "bbox_long_mm": 51.07625948141015,
+      "bbox_short_mm": 45.18657285224445,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 51.07625948141015,
+      "short_mm": 45.18657285224445,
+      "aspect": 1.1303415208855156,
+      "section_area_mm2": 1764.1918463620764,
+      "shape_key": [
+        1.13,
+        0.764
+      ],
+      "part_id": "peg_51.08x45.19_l100"
+    },
+    {
+      "solid_index": 7,
+      "bbox_long_mm": 49.80528000000005,
+      "bbox_short_mm": 32.0176800000001,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 49.80528000000005,
+      "short_mm": 32.0176800000001,
+      "aspect": 1.5555555555555525,
+      "section_area_mm2": 1583.7855581389492,
+      "shape_key": [
+        1.556,
+        0.993
+      ],
+      "part_id": "peg_49.81x32.02_l100"
+    },
+    {
+      "solid_index": 8,
+      "bbox_long_mm": 54.29145783354605,
+      "bbox_short_mm": 51.982479596057864,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 54.29145783354605,
+      "short_mm": 51.982479596057864,
+      "aspect": 1.0444183935708848,
+      "section_area_mm2": 1365.144752548462,
+      "shape_key": [
+        1.044,
+        0.484
+      ],
+      "part_id": "peg_54.29x51.98_l100"
+    },
+    {
+      "solid_index": 9,
+      "bbox_long_mm": 40.32000000000005,
+      "bbox_short_mm": 25.920000000000044,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 40.32000000000005,
+      "short_mm": 25.920000000000044,
+      "aspect": 1.555555555555555,
+      "section_area_mm2": 1037.9744261059343,
+      "shape_key": [
+        1.556,
+        0.993
+      ],
+      "part_id": "peg_40.32x25.92_l100"
+    },
+    {
+      "solid_index": 10,
+      "bbox_long_mm": 40.32000000000005,
+      "bbox_short_mm": 40.31999999999999,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 40.32000000000005,
+      "short_mm": 40.31999999999999,
+      "aspect": 1.0000000000000013,
+      "section_area_mm2": 1276.823679190824,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_40.32x40.32_l100"
+    },
+    {
+      "solid_index": 11,
+      "bbox_long_mm": 41.34892489893566,
+      "bbox_short_mm": 36.580913055854126,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 41.34892489893566,
+      "short_mm": 36.580913055854126,
+      "aspect": 1.1303415208855345,
+      "section_area_mm2": 1156.2083072787893,
+      "shape_key": [
+        1.13,
+        0.764
+      ],
+      "part_id": "peg_41.35x36.58_l100"
+    },
+    {
+      "solid_index": 12,
+      "bbox_long_mm": 40.15293750000012,
+      "bbox_short_mm": 15.443437500001039,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 15.443437500000186,
+      "short_mm": 15.443437500000073,
+      "aspect": 1.0000000000000073,
+      "section_area_mm2": 235.55165057009887,
+      "shape_key": [
+        1.0,
+        0.988
+      ],
+      "part_id": "peg_15.44x15.44_l100"
+    },
+    {
+      "solid_index": 13,
+      "bbox_long_mm": 52.79999999999404,
+      "bbox_short_mm": 49.263070659912344,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 15.840000000000032,
+      "short_mm": 15.840000000000032,
+      "aspect": 1.0,
+      "section_area_mm2": 197.06079742613605,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_15.84x15.84_l100"
+    },
+    {
+      "solid_index": 14,
+      "bbox_long_mm": 53.001877500000035,
+      "bbox_short_mm": 20.385337499999224,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 20.38533750000005,
+      "short_mm": 20.385337499999025,
+      "aspect": 1.0000000000000502,
+      "section_area_mm2": 410.4251959533185,
+      "shape_key": [
+        1.0,
+        0.988
+      ],
+      "part_id": "peg_20.39x20.39_l100"
+    },
+    {
+      "solid_index": 15,
+      "bbox_long_mm": 63.35999999999997,
+      "bbox_short_mm": 23.760000000000062,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 23.760000000000232,
+      "short_mm": 23.759999999999096,
+      "aspect": 1.0000000000000477,
+      "section_area_mm2": 545.153471073409,
+      "shape_key": [
+        1.0,
+        0.966
+      ],
+      "part_id": "peg_23.76x23.76_l100"
+    },
+    {
+      "solid_index": 16,
+      "bbox_long_mm": 40.0,
+      "bbox_short_mm": 15.000000000000028,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 15.0,
+      "short_mm": 14.999999999999943,
+      "aspect": 1.0000000000000038,
+      "section_area_mm2": 217.27433388230622,
+      "shape_key": [
+        1.0,
+        0.966
+      ],
+      "part_id": "peg_15.00x15.00_l100"
+    },
+    {
+      "solid_index": 17,
+      "bbox_long_mm": 43.951797477066066,
+      "bbox_short_mm": 42.0825578595895,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 43.951797477066066,
+      "short_mm": 42.0825578595895,
+      "aspect": 1.0444183935708797,
+      "section_area_mm2": 894.6825747944556,
+      "shape_key": [
+        1.044,
+        0.484
+      ],
+      "part_id": "peg_43.95x42.08_l100"
+    },
+    {
+      "solid_index": 18,
+      "bbox_long_mm": 33.26004146558131,
+      "bbox_short_mm": 29.424771939304037,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 33.26004146558131,
+      "short_mm": 29.424771939304037,
+      "aspect": 1.1303415208854797,
+      "section_area_mm2": 748.088905359037,
+      "shape_key": [
+        1.13,
+        0.764
+      ],
+      "part_id": "peg_33.26x29.42_l100"
+    },
+    {
+      "solid_index": 19,
+      "bbox_long_mm": 48.00000000000006,
+      "bbox_short_mm": 28.800000000000068,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 48.00000000000006,
+      "short_mm": 28.800000000000054,
+      "aspect": 1.6666666666666654,
+      "section_area_mm2": 1001.9326900502897,
+      "shape_key": [
+        1.667,
+        0.725
+      ],
+      "part_id": "peg_48.00x28.80_l100"
+    },
+    {
+      "solid_index": 20,
+      "bbox_long_mm": 53.36280000000001,
+      "bbox_short_mm": 35.57520000000001,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 53.36279905366753,
+      "short_mm": 35.575199967170064,
+      "aspect": 1.4999999747833443,
+      "section_area_mm2": 1490.3020279227346,
+      "shape_key": [
+        1.5,
+        0.785
+      ],
+      "part_id": "peg_53.36x35.58_l100"
+    },
+    {
+      "solid_index": 21,
+      "bbox_long_mm": 49.80528000000001,
+      "bbox_short_mm": 49.80527999999998,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 49.80527999999998,
+      "short_mm": 49.80527999999998,
+      "aspect": 1.0,
+      "section_area_mm2": 1948.2319145172046,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_49.81x49.81_l100"
+    },
+    {
+      "solid_index": 22,
+      "bbox_long_mm": 59.29200000000009,
+      "bbox_short_mm": 35.57520000000008,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 59.29200000000009,
+      "short_mm": 35.57520000000008,
+      "aspect": 1.6666666666666654,
+      "section_area_mm2": 1528.7915432388593,
+      "shape_key": [
+        1.667,
+        0.725
+      ],
+      "part_id": "peg_59.29x35.58_l100"
+    },
+    {
+      "solid_index": 23,
+      "bbox_long_mm": 32.43240000000003,
+      "bbox_short_mm": 20.84940000000003,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 32.43240000000003,
+      "short_mm": 20.84940000000003,
+      "aspect": 1.5555555555555547,
+      "section_area_mm2": 671.5893211697875,
+      "shape_key": [
+        1.556,
+        0.993
+      ],
+      "part_id": "peg_32.43x20.85_l100"
+    },
+    {
+      "solid_index": 24,
+      "bbox_long_mm": 34.749000000000024,
+      "bbox_short_mm": 23.166000000000004,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 34.74899945348102,
+      "short_mm": 23.166000834714122,
+      "aspect": 1.4999999223607832,
+      "section_area_mm2": 631.947415924162,
+      "shape_key": [
+        1.5,
+        0.785
+      ],
+      "part_id": "peg_34.75x23.17_l100"
+    },
+    {
+      "solid_index": 25,
+      "bbox_long_mm": 32.4323999999998,
+      "bbox_short_mm": 32.4323999999998,
+      "length_mm": 100.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 32.4323999999998,
+      "short_mm": 32.43239999999969,
+      "aspect": 1.0000000000000036,
+      "section_area_mm2": 826.1293596396868,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_32.43x32.43_l100"
+    },
+    {
+      "solid_index": 26,
+      "bbox_long_mm": 39.99999999999511,
+      "bbox_short_mm": 37.32050807569142,
+      "length_mm": 100.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 11.999999999999886,
+      "short_mm": 11.999999999999773,
+      "aspect": 1.0000000000000095,
+      "section_area_mm2": 113.09733552923039,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_12.00x12.00_l100"
+    },
+    {
+      "solid_index": 27,
+      "bbox_long_mm": 63.35999999999212,
+      "bbox_short_mm": 59.115684791894694,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 19.00800000000001,
+      "short_mm": 19.007999999999996,
+      "aspect": 1.0000000000000007,
+      "section_area_mm2": 283.76754829363404,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_19.01x19.01_l150"
+    },
+    {
+      "solid_index": 28,
+      "bbox_long_mm": 63.60225300000012,
+      "bbox_short_mm": 24.46240500000026,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 24.462405000000118,
+      "short_mm": 24.462405000000018,
+      "aspect": 1.000000000000004,
+      "section_area_mm2": 591.0122821728097,
+      "shape_key": [
+        1.0,
+        0.988
+      ],
+      "part_id": "peg_24.46x24.46_l150"
+    },
+    {
+      "solid_index": 29,
+      "bbox_long_mm": 52.79999999999404,
+      "bbox_short_mm": 49.26307065991267,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 15.840000000000039,
+      "short_mm": 15.840000000000032,
+      "aspect": 1.0000000000000004,
+      "section_area_mm2": 197.06079742613605,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_15.84x15.84_l150"
+    },
+    {
+      "solid_index": 30,
+      "bbox_long_mm": 40.0,
+      "bbox_short_mm": 15.000000000000341,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 15.0,
+      "short_mm": 15.0,
+      "aspect": 1.0,
+      "section_area_mm2": 176.71458676442597,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_15.00x15.00_l150"
+    },
+    {
+      "solid_index": 31,
+      "bbox_long_mm": 39.99999999999534,
+      "bbox_short_mm": 37.32050807569115,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 11.999999999999886,
+      "short_mm": 11.999999999999773,
+      "aspect": 1.0000000000000095,
+      "section_area_mm2": 113.09733552923039,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_12.00x12.00_l150"
+    },
+    {
+      "solid_index": 32,
+      "bbox_long_mm": 32.43240000000003,
+      "bbox_short_mm": 20.84940000000003,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 32.43240000000003,
+      "short_mm": 20.84940000000003,
+      "aspect": 1.5555555555555547,
+      "section_area_mm2": 671.5893211697908,
+      "shape_key": [
+        1.556,
+        0.993
+      ],
+      "part_id": "peg_32.43x20.85_l150"
+    },
+    {
+      "solid_index": 33,
+      "bbox_long_mm": 35.35372709561602,
+      "bbox_short_mm": 33.85015747830704,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 35.35372709561602,
+      "short_mm": 33.85015747830704,
+      "aspect": 1.0444183935709177,
+      "section_area_mm2": 578.8767506756955,
+      "shape_key": [
+        1.044,
+        0.484
+      ],
+      "part_id": "peg_35.35x33.85_l150"
+    },
+    {
+      "solid_index": 34,
+      "bbox_long_mm": 54.29145783354605,
+      "bbox_short_mm": 51.98247959605803,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 54.29145783354605,
+      "short_mm": 51.98247959605803,
+      "aspect": 1.0444183935708815,
+      "section_area_mm2": 1365.144752548466,
+      "shape_key": [
+        1.044,
+        0.484
+      ],
+      "part_id": "peg_54.29x51.98_l150"
+    },
+    {
+      "solid_index": 35,
+      "bbox_long_mm": 53.36280000000001,
+      "bbox_short_mm": 35.575200000000024,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 53.362799053667466,
+      "short_mm": 35.57519996717224,
+      "aspect": 1.4999999747832509,
+      "section_area_mm2": 1490.3020279211607,
+      "shape_key": [
+        1.5,
+        0.785
+      ],
+      "part_id": "peg_53.36x35.58_l150"
+    },
+    {
+      "solid_index": 36,
+      "bbox_long_mm": 48.00000000000006,
+      "bbox_short_mm": 28.800000000000054,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 48.00000000000006,
+      "short_mm": 28.800000000000054,
+      "aspect": 1.6666666666666654,
+      "section_area_mm2": 1001.9326900502914,
+      "shape_key": [
+        1.667,
+        0.725
+      ],
+      "part_id": "peg_48.00x28.80_l150"
+    },
+    {
+      "solid_index": 37,
+      "bbox_long_mm": 49.80528000000001,
+      "bbox_short_mm": 49.80528000000001,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 49.80528000000001,
+      "short_mm": 49.80527999999998,
+      "aspect": 1.0000000000000007,
+      "section_area_mm2": 1948.2319145172046,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_49.81x49.81_l150"
+    },
+    {
+      "solid_index": 38,
+      "bbox_long_mm": 59.292000000000115,
+      "bbox_short_mm": 35.57520000000005,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 59.292000000000115,
+      "short_mm": 35.57520000000005,
+      "aspect": 1.6666666666666674,
+      "section_area_mm2": 1528.7915432388527,
+      "shape_key": [
+        1.667,
+        0.725
+      ],
+      "part_id": "peg_59.29x35.58_l150"
+    },
+    {
+      "solid_index": 39,
+      "bbox_long_mm": 34.749000000000024,
+      "bbox_short_mm": 23.165999999999997,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 34.74900097761997,
+      "short_mm": 23.166000200000013,
+      "aspect": 1.5000000292506235,
+      "section_area_mm2": 631.9319166855105,
+      "shape_key": [
+        1.5,
+        0.785
+      ],
+      "part_id": "peg_34.75x23.17_l150"
+    },
+    {
+      "solid_index": 40,
+      "bbox_long_mm": 43.95179747706601,
+      "bbox_short_mm": 42.08255785958903,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 43.95179747706601,
+      "short_mm": 42.08255785958903,
+      "aspect": 1.0444183935708902,
+      "section_area_mm2": 894.682574794458,
+      "shape_key": [
+        1.044,
+        0.484
+      ],
+      "part_id": "peg_43.95x42.08_l150"
+    },
+    {
+      "solid_index": 41,
+      "bbox_long_mm": 52.800000000000125,
+      "bbox_short_mm": 19.800000000000054,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 19.800000000000068,
+      "short_mm": 19.800000000000054,
+      "aspect": 1.0000000000000007,
+      "section_area_mm2": 307.9074959783368,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_19.80x19.80_l150"
+    },
+    {
+      "solid_index": 42,
+      "bbox_long_mm": 53.001877500000035,
+      "bbox_short_mm": 20.385337500000198,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 20.38533750000022,
+      "short_mm": 20.385337500000198,
+      "aspect": 1.000000000000001,
+      "section_area_mm2": 410.42519595333187,
+      "shape_key": [
+        1.0,
+        0.988
+      ],
+      "part_id": "peg_20.39x20.39_l150"
+    },
+    {
+      "solid_index": 43,
+      "bbox_long_mm": 63.35999999999997,
+      "bbox_short_mm": 23.760000000000048,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 23.759999999999998,
+      "short_mm": 23.75999999999999,
+      "aspect": 1.0000000000000002,
+      "section_area_mm2": 443.3867942088033,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_23.76x23.76_l150"
+    },
+    {
+      "solid_index": 44,
+      "bbox_long_mm": 40.15293750000012,
+      "bbox_short_mm": 15.443437500000158,
+      "length_mm": 150.0,
+      "two_tier": true,
+      "prong_at_tip": true,
+      "long_mm": 15.443437500000186,
+      "short_mm": 15.443437500000158,
+      "aspect": 1.0000000000000018,
+      "section_area_mm2": 235.55165057009717,
+      "shape_key": [
+        1.0,
+        0.988
+      ],
+      "part_id": "peg_15.44x15.44_l150"
+    },
+    {
+      "solid_index": 45,
+      "bbox_long_mm": 38.610000000000014,
+      "bbox_short_mm": 23.16600000000011,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 38.610000000000014,
+      "short_mm": 23.166000000000096,
+      "aspect": 1.6666666666666603,
+      "section_area_mm2": 648.269628080435,
+      "shape_key": [
+        1.667,
+        0.725
+      ],
+      "part_id": "peg_38.61x23.17_l150"
+    },
+    {
+      "solid_index": 46,
+      "bbox_long_mm": 43.200000000000045,
+      "bbox_short_mm": 28.80000000000001,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 43.19999927196142,
+      "short_mm": 28.800000012436413,
+      "aspect": 1.4999999740731527,
+      "section_area_mm2": 976.7069020438589,
+      "shape_key": [
+        1.5,
+        0.785
+      ],
+      "part_id": "peg_43.20x28.80_l150"
+    },
+    {
+      "solid_index": 47,
+      "bbox_long_mm": 33.26004146558208,
+      "bbox_short_mm": 29.424771939304037,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 33.26004146558208,
+      "short_mm": 29.424771939304037,
+      "aspect": 1.1303415208855057,
+      "section_area_mm2": 748.0889053590248,
+      "shape_key": [
+        1.13,
+        0.764
+      ],
+      "part_id": "peg_33.26x29.42_l150"
+    },
+    {
+      "solid_index": 48,
+      "bbox_long_mm": 40.32000000000005,
+      "bbox_short_mm": 25.920000000000115,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 40.32000000000005,
+      "short_mm": 25.920000000000115,
+      "aspect": 1.5555555555555505,
+      "section_area_mm2": 1037.9744261059388,
+      "shape_key": [
+        1.556,
+        0.993
+      ],
+      "part_id": "peg_40.32x25.92_l150"
+    },
+    {
+      "solid_index": 49,
+      "bbox_long_mm": 32.43239999999981,
+      "bbox_short_mm": 32.4323999999998,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 32.43239999999981,
+      "short_mm": 32.43239999999969,
+      "aspect": 1.0000000000000038,
+      "section_area_mm2": 826.1293596396868,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_32.43x32.43_l150"
+    },
+    {
+      "solid_index": 50,
+      "bbox_long_mm": 40.32000000000005,
+      "bbox_short_mm": 40.31999999999999,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 40.32000000000005,
+      "short_mm": 40.31999999999999,
+      "aspect": 1.0000000000000013,
+      "section_area_mm2": 1276.823679190824,
+      "shape_key": [
+        1.0,
+        0.785
+      ],
+      "part_id": "peg_40.32x40.32_l150"
+    },
+    {
+      "solid_index": 51,
+      "bbox_long_mm": 51.07625948141012,
+      "bbox_short_mm": 45.186572852244424,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 51.07625948141012,
+      "short_mm": 45.186572852244424,
+      "aspect": 1.1303415208855156,
+      "section_area_mm2": 1764.1918463620668,
+      "shape_key": [
+        1.13,
+        0.764
+      ],
+      "part_id": "peg_51.08x45.19_l150"
+    },
+    {
+      "solid_index": 52,
+      "bbox_long_mm": 49.80528000000008,
+      "bbox_short_mm": 32.01768000000013,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 49.80528000000008,
+      "short_mm": 32.01768000000013,
+      "aspect": 1.555555555555552,
+      "section_area_mm2": 1583.7855581389504,
+      "shape_key": [
+        1.556,
+        0.993
+      ],
+      "part_id": "peg_49.81x32.02_l150"
+    },
+    {
+      "solid_index": 53,
+      "bbox_long_mm": 41.34892489893613,
+      "bbox_short_mm": 36.580913055854126,
+      "length_mm": 150.0,
+      "two_tier": false,
+      "prong_at_tip": false,
+      "long_mm": 41.34892489893613,
+      "short_mm": 36.580913055854126,
+      "aspect": 1.1303415208855474,
+      "section_area_mm2": 1156.2083072787964,
+      "shape_key": [
+        1.13,
+        0.764
+      ],
+      "part_id": "peg_41.35x36.58_l150"
+    }
+  ],
+  "holes": [
+    {
+      "board_index": 0,
+      "long_mm": 54.07625948141044,
+      "short_mm": 48.186572852244694,
+      "aspect": 1.1222267175386262,
+      "center_xy_mm": [
+        43.642999999998985,
+        78.87919999999983
+      ],
+      "n_edges": 12,
+      "geom_types": {
+        "CIRCLE": 6,
+        "LINE": 6
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        51.08,
+        45.19
+      ],
+      "matched_part_ids": [
+        "peg_51.08x45.19_l100",
+        "peg_51.08x45.19_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 22.00800000000001,
+      "short_mm": 22.008000000000003,
+      "aspect": 1.0000000000000002,
+      "center_xy_mm": [
+        93.67056772957407,
+        64.05011013077458
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        19.01,
+        19.01
+      ],
+      "matched_part_ids": [
+        "peg_19.01x19.01_l100",
+        "peg_19.01x19.01_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 0,
+      "long_mm": 22.00800000000001,
+      "short_mm": 22.00800000000001,
+      "aspect": 1.0,
+      "center_xy_mm": [
+        109.51056772956593,
+        91.4857949226481
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        19.01,
+        19.01
+      ],
+      "matched_part_ids": [
+        "peg_19.01x19.01_l100",
+        "peg_19.01x19.01_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 0,
+      "long_mm": 22.00800000000001,
+      "short_mm": 22.008000000000003,
+      "aspect": 1.0000000000000002,
+      "center_xy_mm": [
+        125.35056772957195,
+        64.05011013077667
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        19.01,
+        19.01
+      ],
+      "matched_part_ids": [
+        "peg_19.01x19.01_l100",
+        "peg_19.01x19.01_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 0,
+      "long_mm": 62.292000000000115,
+      "short_mm": 38.5752000000001,
+      "aspect": 1.6148198842779804,
+      "center_xy_mm": [
+        186.65179999999998,
+        73.44106344880154
+      ],
+      "n_edges": 12,
+      "geom_types": {
+        "CIRCLE": 7,
+        "LINE": 5
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        59.29,
+        35.58
+      ],
+      "matched_part_ids": [
+        "peg_59.29x35.58_l100",
+        "peg_59.29x35.58_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 57.29145783354692,
+      "short_mm": 54.98247959605794,
+      "aspect": 1.0419948000609003,
+      "center_xy_mm": [
+        43.04500225001846,
+        154.30180651806057
+      ],
+      "n_edges": 15,
+      "geom_types": {
+        "LINE": 10,
+        "CIRCLE": 5
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        54.29,
+        51.98
+      ],
+      "matched_part_ids": [
+        "peg_54.29x51.98_l100",
+        "peg_54.29x51.98_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 52.80528000000001,
+      "short_mm": 52.80527999999998,
+      "aspect": 1.0000000000000004,
+      "center_xy_mm": [
+        111.6517999999999,
+        154.89680000000004
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        49.81,
+        49.81
+      ],
+      "matched_part_ids": [
+        "peg_49.81x49.81_l100",
+        "peg_49.81x49.81_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 26.760000000001497,
+      "short_mm": 26.760000000001277,
+      "aspect": 1.0000000000000082,
+      "center_xy_mm": [
+        23.76142293914035,
+        232.58232071622155
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "CIRCLE": 4,
+        "LINE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        23.76,
+        23.76
+      ],
+      "matched_part_ids": [
+        "peg_23.76x23.76_l100",
+        "peg_23.76x23.76_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 26.759999999999998,
+      "short_mm": 26.75999999999999,
+      "aspect": 1.0000000000000002,
+      "center_xy_mm": [
+        63.36142293914024,
+        232.582320716225
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        23.76,
+        23.76
+      ],
+      "matched_part_ids": [
+        "peg_23.76x23.76_l100",
+        "peg_23.76x23.76_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 0,
+      "long_mm": 27.462405000002263,
+      "short_mm": 27.462405000002008,
+      "aspect": 1.0000000000000093,
+      "center_xy_mm": [
+        168.72331680040497,
+        154.285750679914
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "LINE": 4,
+        "CIRCLE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        24.46,
+        24.46
+      ],
+      "matched_part_ids": [
+        "peg_24.46x24.46_l100",
+        "peg_24.46x24.46_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 27.462405000002235,
+      "short_mm": 27.46240500000195,
+      "aspect": 1.0000000000000104,
+      "center_xy_mm": [
+        207.86316480040486,
+        154.2857506799176
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "LINE": 4,
+        "CIRCLE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        24.46,
+        24.46
+      ],
+      "matched_part_ids": [
+        "peg_24.46x24.46_l100",
+        "peg_24.46x24.46_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 56.36138864088595,
+      "short_mm": 38.57562728377917,
+      "aspect": 1.4610621423280288,
+      "center_xy_mm": [
+        116.05959084857945,
+        227.89435014263793
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "BSPLINE": 1
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        53.36,
+        35.58
+      ],
+      "matched_part_ids": [
+        "peg_53.36x35.58_l100",
+        "peg_53.36x35.58_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 0,
+      "long_mm": 52.80528000000015,
+      "short_mm": 35.01768000000013,
+      "aspect": 1.507960550213491,
+      "center_xy_mm": [
+        187.11173086193,
+        227.227474595637
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "CIRCLE": 4,
+        "LINE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        49.81,
+        32.02
+      ],
+      "matched_part_ids": [
+        "peg_49.81x32.02_l100",
+        "peg_49.81x32.02_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 44.34892489893612,
+      "short_mm": 39.58091305585515,
+      "aspect": 1.1204624015709927,
+      "center_xy_mm": [
+        321.71313206838147,
+        86.85445450016469
+      ],
+      "n_edges": 12,
+      "geom_types": {
+        "CIRCLE": 6,
+        "LINE": 6
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        41.35,
+        36.58
+      ],
+      "matched_part_ids": [
+        "peg_41.35x36.58_l100",
+        "peg_41.35x36.58_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 18.840000000000032,
+      "short_mm": 18.840000000000032,
+      "aspect": 1.0,
+      "center_xy_mm": [
+        375.65036164328797,
+        77.3567203324063
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        15.84,
+        15.84
+      ],
+      "matched_part_ids": [
+        "peg_15.84x15.84_l100",
+        "peg_15.84x15.84_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 1,
+      "long_mm": 18.840000000000032,
+      "short_mm": 18.840000000000032,
+      "aspect": 1.0,
+      "center_xy_mm": [
+        388.85036164328096,
+        100.21979099230099
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        15.84,
+        15.84
+      ],
+      "matched_part_ids": [
+        "peg_15.84x15.84_l100",
+        "peg_15.84x15.84_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 1,
+      "long_mm": 18.840000000000032,
+      "short_mm": 18.840000000000032,
+      "aspect": 1.0,
+      "center_xy_mm": [
+        402.05036164328595,
+        77.3567203324081
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        15.84,
+        15.84
+      ],
+      "matched_part_ids": [
+        "peg_15.84x15.84_l100",
+        "peg_15.84x15.84_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 1,
+      "long_mm": 51.00000000000006,
+      "short_mm": 31.80000000000011,
+      "aspect": 1.6037735849056565,
+      "center_xy_mm": [
+        462.148323763161,
+        83.00731518974057
+      ],
+      "n_edges": 12,
+      "geom_types": {
+        "CIRCLE": 7,
+        "LINE": 5
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        48.0,
+        28.8
+      ],
+      "matched_part_ids": [
+        "peg_48.00x28.80_l100",
+        "peg_48.00x28.80_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 46.951797477066975,
+      "short_mm": 45.08255785958903,
+      "aspect": 1.04146259010635,
+      "center_xy_mm": [
+        321.31862710939265,
+        156.44619361068192
+      ],
+      "n_edges": 15,
+      "geom_types": {
+        "LINE": 10,
+        "CIRCLE": 5
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        43.95,
+        42.08
+      ],
+      "matched_part_ids": [
+        "peg_43.95x42.08_l100",
+        "peg_43.95x42.08_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 43.32000000000005,
+      "short_mm": 43.31999999999999,
+      "aspect": 1.0000000000000013,
+      "center_xy_mm": [
+        387.1999999999999,
+        159.2
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        40.32,
+        40.32
+      ],
+      "matched_part_ids": [
+        "peg_40.32x40.32_l100",
+        "peg_40.32x40.32_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 22.80000000000109,
+      "short_mm": 22.800000000001035,
+      "aspect": 1.0000000000000024,
+      "center_xy_mm": [
+        305.84872953261237,
+        226.37887291629573
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "LINE": 4,
+        "CIRCLE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        19.8,
+        19.8
+      ],
+      "matched_part_ids": [
+        "peg_19.80x19.80_l100",
+        "peg_19.80x19.80_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 22.80000000000001,
+      "short_mm": 22.799999999999955,
+      "aspect": 1.0000000000000024,
+      "center_xy_mm": [
+        338.84872953261294,
+        226.37887291629897
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        19.8,
+        19.8
+      ],
+      "matched_part_ids": [
+        "peg_19.80x19.80_l100",
+        "peg_19.80x19.80_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 1,
+      "long_mm": 46.198948201135295,
+      "short_mm": 31.793809364299136,
+      "aspect": 1.4530799902515459,
+      "center_xy_mm": [
+        390.0988434545543,
+        225.4079053452182
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "BSPLINE": 1
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        43.2,
+        28.8
+      ],
+      "matched_part_ids": [
+        "peg_43.20x28.80_l100",
+        "peg_43.20x28.80_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 23.38533750000198,
+      "short_mm": 23.38533750000164,
+      "aspect": 1.0000000000000147,
+      "center_xy_mm": [
+        443.47569432498045,
+        158.17120209155584
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "LINE": 4,
+        "CIRCLE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        20.39,
+        20.39
+      ],
+      "matched_part_ids": [
+        "peg_20.39x20.39_l100",
+        "peg_20.39x20.39_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 23.385337500001242,
+      "short_mm": 23.38533750000113,
+      "aspect": 1.0000000000000049,
+      "center_xy_mm": [
+        476.09223432498004,
+        158.17120209155868
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "LINE": 4,
+        "CIRCLE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        20.39,
+        20.39
+      ],
+      "matched_part_ids": [
+        "peg_20.39x20.39_l100",
+        "peg_20.39x20.39_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 1,
+      "long_mm": 43.32000000000011,
+      "short_mm": 28.9200000000001,
+      "aspect": 1.497925311203318,
+      "center_xy_mm": [
+        461.25586218951497,
+        225.31031668968
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "CIRCLE": 4,
+        "LINE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        40.32,
+        25.92
+      ],
+      "matched_part_ids": [
+        "peg_40.32x25.92_l100",
+        "peg_40.32x25.92_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 36.260041465581395,
+      "short_mm": 32.424771939303014,
+      "aspect": 1.1182820817817238,
+      "center_xy_mm": [
+        610.8869111674236,
+        83.654937586588
+      ],
+      "n_edges": 12,
+      "geom_types": {
+        "CIRCLE": 6,
+        "LINE": 6
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        33.26,
+        29.42
+      ],
+      "matched_part_ids": [
+        "peg_33.26x29.42_l100",
+        "peg_33.26x29.42_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 14.999999999999886,
+      "short_mm": 14.999999999999773,
+      "aspect": 1.0000000000000075,
+      "center_xy_mm": [
+        667.811339033824,
+        78.22052041547327
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        12.0,
+        12.0
+      ],
+      "matched_part_ids": [
+        "peg_12.00x12.00_l100",
+        "peg_12.00x12.00_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 2,
+      "long_mm": 14.999999999999886,
+      "short_mm": 14.999999999999773,
+      "aspect": 1.0000000000000075,
+      "center_xy_mm": [
+        677.8113390338191,
+        95.54102849115098
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        12.0,
+        12.0
+      ],
+      "matched_part_ids": [
+        "peg_12.00x12.00_l100",
+        "peg_12.00x12.00_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 2,
+      "long_mm": 35.4323999999998,
+      "short_mm": 35.43239999999969,
+      "aspect": 1.000000000000003,
+      "center_xy_mm": [
+        677.9664999999999,
+        152.529
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        32.43,
+        32.43
+      ],
+      "matched_part_ids": [
+        "peg_32.43x32.43_l100",
+        "peg_32.43x32.43_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 14.999999999999886,
+      "short_mm": 14.999999999999773,
+      "aspect": 1.0000000000000075,
+      "center_xy_mm": [
+        687.8113390338228,
+        78.22052041547468
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        12.0,
+        12.0
+      ],
+      "matched_part_ids": [
+        "peg_12.00x12.00_l100",
+        "peg_12.00x12.00_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 2,
+      "long_mm": 41.610000000000014,
+      "short_mm": 26.166000000000096,
+      "aspect": 1.590231598257275,
+      "center_xy_mm": [
+        752.9665,
+        84.3798586205926
+      ],
+      "n_edges": 12,
+      "geom_types": {
+        "CIRCLE": 7,
+        "LINE": 5
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        38.61,
+        23.17
+      ],
+      "matched_part_ids": [
+        "peg_38.61x23.17_l100",
+        "peg_38.61x23.17_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 18.443437500002005,
+      "short_mm": 18.443437500001096,
+      "aspect": 1.0000000000000493,
+      "center_xy_mm": [
+        740.5204381249811,
+        151.12645829158146
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "LINE": 4,
+        "CIRCLE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        15.44,
+        15.44
+      ],
+      "matched_part_ids": [
+        "peg_15.44x15.44_l100",
+        "peg_15.44x15.44_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 18.44343750000189,
+      "short_mm": 18.44343750000121,
+      "aspect": 1.000000000000037,
+      "center_xy_mm": [
+        765.2299381249809,
+        151.1264582915835
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "LINE": 4,
+        "CIRCLE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        15.44,
+        15.44
+      ],
+      "matched_part_ids": [
+        "peg_15.44x15.44_l100",
+        "peg_15.44x15.44_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 38.35372709561591,
+      "short_mm": 36.85015747830704,
+      "aspect": 1.0408022575804186,
+      "center_xy_mm": [
+        611.9664999999981,
+        154.4209999999992
+      ],
+      "n_edges": 15,
+      "geom_types": {
+        "LINE": 10,
+        "CIRCLE": 5
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        35.35,
+        33.85
+      ],
+      "matched_part_ids": [
+        "peg_35.35x33.85_l100",
+        "peg_35.35x33.85_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 18.000000000001023,
+      "short_mm": 18.000000000001023,
+      "aspect": 1.0,
+      "center_xy_mm": [
+        600.5000102519735,
+        222.7989361891085
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "CIRCLE": 4,
+        "LINE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        15.0,
+        15.0
+      ],
+      "matched_part_ids": [
+        "peg_15.00x15.00_l100",
+        "peg_15.00x15.00_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 18.0,
+      "short_mm": 18.0,
+      "aspect": 1.0,
+      "center_xy_mm": [
+        625.5000102519739,
+        222.79893618911095
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "CIRCLE": 1
+      },
+      "is_circle": true,
+      "matched_prong_mm": [
+        15.0,
+        15.0
+      ],
+      "matched_part_ids": [
+        "peg_15.00x15.00_l100",
+        "peg_15.00x15.00_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": false
+    },
+    {
+      "board_index": 2,
+      "long_mm": 37.74814238561146,
+      "short_mm": 26.161402915668248,
+      "aspect": 1.442894423792687,
+      "center_xy_mm": [
+        678.5751725224329,
+        221.32003804590693
+      ],
+      "n_edges": 1,
+      "geom_types": {
+        "BSPLINE": 1
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        34.75,
+        23.17
+      ],
+      "matched_part_ids": [
+        "peg_34.75x23.17_l100",
+        "peg_34.75x23.17_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    },
+    {
+      "board_index": 2,
+      "long_mm": 35.43240000000003,
+      "short_mm": 23.849400000000117,
+      "aspect": 1.4856725955369887,
+      "center_xy_mm": [
+        753.9125,
+        220.475
+      ],
+      "n_edges": 8,
+      "geom_types": {
+        "CIRCLE": 4,
+        "LINE": 4
+      },
+      "is_circle": false,
+      "matched_prong_mm": [
+        32.43,
+        20.85
+      ],
+      "matched_part_ids": [
+        "peg_32.43x20.85_l100",
+        "peg_32.43x20.85_l150"
+      ],
+      "kind": "peg_hole",
+      "confident": true
+    }
+  ]
+}

@@ -1,0 +1,67 @@
+# SPDX-FileCopyrightText: Copyright (c) 2026 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+
+[project]
+name = "robolab"
+version = "0.1.0"
+description = "A benchmark for simulation"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "Xuning Yang"}]
+dependencies = [
+    # Core
+    "isaaclab==2.2.0",
+    "isaacsim[all,extscache]==5.0.0",
+    "torch",
+    "numpy",
+    "gymnasium",
+    # Scientific computing
+    "scipy",
+    "matplotlib",
+    # Data handling (cv2 comes from isaaclab's opencv-python-headless)
+    "h5py",
+    "PyYAML",
+    "pandas",
+    "pyarrow",
+    "huggingface_hub",
+    # Misc
+    "psutil",
+    "setuptools<81",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["robolab", "robolab.*"]
+
+# -- uv configuration --
+
+[tool.uv]
+prerelease = "allow"
+index-strategy = "unsafe-best-match"
+# warp-lang 1.13.0.dev20260418 on pypi.nvidia.com only published the macOS
+# wheel — no Linux build — so any resolver pass that picked it would break
+# `uv sync` on Linux. Exclude that specific version.
+constraint-dependencies = ["warp-lang != 1.13.0.dev20260418"]
+
+[tool.uv.extra-build-dependencies]
+# flatdict 4.0.1 ships sdist-only and its legacy setup.py needs an older
+# setuptools plus `wheel` to build. Building in an isolated PEP 517 env
+# (i.e. NOT in `no-build-isolation-package`) lets these deps apply
+# deterministically regardless of what's in the project venv.
+flatdict = ["setuptools<81", "wheel"]
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[[tool.uv.index]]
+name = "nvidia"
+url = "https://pypi.nvidia.com"
+
+[tool.uv.sources]
+torch = { index = "pytorch-cu128" }
+torchvision = { index = "pytorch-cu128" }

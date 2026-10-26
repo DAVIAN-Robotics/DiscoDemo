@@ -1,0 +1,7 @@
+# @package _global_
+# DiscoDemo generator: METRA skill objective with diversity weight alpha; one skill z per episode.
+
+method_name: discodemo
+skill:
+  alpha: 0.3
+  z_dim: 3

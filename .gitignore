@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+*.egg-info/
+.venv/
+# Downloaded assets / data and run outputs
+data/*
+!data/demo_banks/
+models/
+outputs/
+wandb/
+runs/
+libs/RoboLab/output/

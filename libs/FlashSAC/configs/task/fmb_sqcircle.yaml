@@ -1,0 +1,35 @@
+# @package _global_
+# FMB-SqCircle: insert the grasped square-circle peg into the board. Horizon 20 s.
+
+task_name: fmb_sqcircle
+
+env:
+  task: libs/real2sim/real2sim/tasks/fmb_sqcircle.py
+  env_version: fr3-fmb_sqcircle
+  gripper_lock: closed
+
+rfcl:
+  demo_path: data/demo_banks/fmb_sqcircle/demos.h5
+  init_pose: 'pregrasp:0.03,15'
+
+# Object xy box (robot base frame, m) of the observation normalization window.
+obs_bounds:
+  object_xy: [[0.25, 0.65], [-0.25, 0.3]]
+
+# Joint velocity / acceleration / jerk limits of the relative arm action: p95 of the human teleop motion.
+jerk_limited_action:
+  max_joint_velocity: [0.065155, 0.457272, 0.123948, 0.192073, 0.205113, 0.464672, 0.326346]
+  max_joint_acceleration: [0.282121, 1.393372, 0.549071, 1.056743, 1.035672, 1.913107, 1.471987]
+  max_joint_jerk: [2.399374, 8.191757, 3.753591, 7.161441, 10.096962, 14.224498, 12.201607]
+
+safety_penalty:
+  illegal_contact:
+    scene_bodies: [peg, board, table]
+    allowed_pairs: [[panda_leftfinger, peg], [panda_rightfinger, peg]]
+  # C_jam: peg pressing on the board, axial and lateral force with separate deadbands.
+  obj_press:
+    weight: 1.0e-6
+    deadband_axial: 5.0
+    deadband_lateral: 15.0
+    sat: 100.0
+    surfaces: [board]
